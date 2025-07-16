@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+import '../widgets/sidebar.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool isCollapsed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Row(
+        children: [
+          Sidebar(
+            isCollapsed: isCollapsed,
+            onToggle: () {
+              setState(() => isCollapsed = !isCollapsed);
+            },
+          ),
+          Expanded(
+            child: Center(
+              child: Text('Main Content Area'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
