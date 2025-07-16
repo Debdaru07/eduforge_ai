@@ -24,7 +24,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Expanded(
             child: Center(
-              child: Text('Main Content Area'),
+              child: Text(
+                'Hello Deb!',
+                style: TextStyle(
+                  fontFamily: 'Satoshi',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                ),
+              ),
             ),
           ),
         ],

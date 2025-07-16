@@ -20,12 +20,14 @@ class AIApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: ThemeData(
-        textTheme: TextTheme(
-          headlineLarge: TextStyle(fontFamily: 'Satoshi', fontWeight: FontWeight.bold, fontSize: 24),
-          bodyMedium: TextStyle(fontFamily: 'Satoshi', fontSize: 16),
-        ),
+      fontFamily: 'Satoshi',
+        brightness: Brightness.light,
       ),
-      darkTheme: ThemeData.dark(),
+      darkTheme: ThemeData(
+        fontFamily: 'Satoshi',
+        brightness: Brightness.dark,
+      ),
+
       home: const HomeScreen(),
     );
   }
