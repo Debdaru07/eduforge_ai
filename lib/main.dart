@@ -1,4 +1,3 @@
-// main.dart
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -20,7 +19,12 @@ class AIApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
-      theme: ThemeData.light(),
+      theme: ThemeData(
+        textTheme: TextTheme(
+          headlineLarge: TextStyle(fontFamily: 'Satoshi', fontWeight: FontWeight.bold, fontSize: 24),
+          bodyMedium: TextStyle(fontFamily: 'Satoshi', fontSize: 16),
+        ),
+      ),
       darkTheme: ThemeData.dark(),
       home: const HomeScreen(),
     );
