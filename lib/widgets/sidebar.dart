@@ -137,7 +137,7 @@ class _SidebarItemState extends State<SidebarItem> {
           child: Stack(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Row(
                   children: [
                     Padding(
