@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class EduForgePalette {
+class AspirantsAIPalette {
   // Light theme
   static const white = Color(0xFFFFFFFF);
   static const grey100 = Color(0xFFF5F5F5);
@@ -8,6 +8,7 @@ class EduForgePalette {
   static const grey600 = Color(0xFF7D7D7D);
   static const black = Color(0xFF000000);
   static const beige = Color(0xFFF9F4ED);
+  static const beigeDark = Color(0xFFE5E5C2);
 
   // Dark theme
   static const darkBackground = Color(0xFF121212);

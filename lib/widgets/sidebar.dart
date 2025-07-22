@@ -1,3 +1,4 @@
+import 'package:aspirants_ai/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class Sidebar extends StatelessWidget {
@@ -11,7 +12,7 @@ class Sidebar extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       width: isCollapsed ? 70 : 220,
-      color: Theme.of(context).colorScheme.surfaceVariant,
+      color: AspirantsAIPalette.beigeDark,
       child: Column(
         children: [
           IconButton(

@@ -5,24 +5,24 @@ import '../fonts/text_theme.dart';
 class EduForgeTheme {
   static ThemeData light = ThemeData(
     brightness: Brightness.light,
-    scaffoldBackgroundColor: EduForgePalette.white,
+    scaffoldBackgroundColor: AspirantsAIPalette.white,
     textTheme: satoshiTextTheme,
-    primaryColor: EduForgePalette.grey600,
+    primaryColor: AspirantsAIPalette.grey600,
     appBarTheme: AppBarTheme(
-      backgroundColor: EduForgePalette.white,
-      foregroundColor: EduForgePalette.black,
+      backgroundColor: AspirantsAIPalette.white,
+      foregroundColor: AspirantsAIPalette.black,
       elevation: 0,
     ),
   );
 
   static ThemeData dark = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: EduForgePalette.darkBackground,
+    scaffoldBackgroundColor: AspirantsAIPalette.darkBackground,
     textTheme: satoshiTextTheme,
-    primaryColor: EduForgePalette.offWhite,
+    primaryColor: AspirantsAIPalette.offWhite,
     appBarTheme: AppBarTheme(
-      backgroundColor: EduForgePalette.darkGrey,
-      foregroundColor: EduForgePalette.white,
+      backgroundColor: AspirantsAIPalette.darkGrey,
+      foregroundColor: AspirantsAIPalette.white,
       elevation: 0,
     ),
   );
