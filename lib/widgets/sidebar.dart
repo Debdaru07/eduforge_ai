@@ -125,7 +125,8 @@ class _SidebarItemState extends State<SidebarItem> {
         onTap: () => screenProvider.setSelectedIndex(widget.index),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 100),
-          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+          margin: const EdgeInsets.symmetric(horizontal: 4.0),
+          padding: isHoveredOnly ? EdgeInsets.symmetric(horizontal: 4) : null,
           decoration: isHoveredOnly
               ? BoxDecoration(
                   color: AspirantsAIPalette.beige.withOpacity(0.5),
@@ -135,49 +136,44 @@ class _SidebarItemState extends State<SidebarItem> {
           clipBehavior: Clip.antiAlias,
           child: Stack(
             children: [
-              if (isHoveredOnly)
-                BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
-                  child: Container(color: Colors.transparent),
-                ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Row(
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                        left: widget.isCollapsed ? 16.0 : 24.0,
+                        left: 8,
                       ),
                       child: Icon(
                         widget.icon,
                         size: isSelected
-                            ? 24
+                            ? 18
                             : isHoveredOnly
-                                ? 26
-                                : 24,
+                                ? 20
+                                : 18,
                         color: AspirantsAIPalette.darkGrey.withOpacity(
-                          isSelected ? 1 : 0.6,
+                          isSelected ? 1 : 0.4,
                         ),
                       ),
                     ),
                     if (!widget.isCollapsed)
                       AnimatedDefaultTextStyle(
                         duration: const Duration(milliseconds: 100),
-                        style: TextStyle(
+                        style: AspirantsAITextStyles.labelSmall.copyWith(
                           color: AspirantsAIPalette.darkGrey.withOpacity(
                             isSelected ? 1 : 0.6,
                           ),
                           fontWeight: isSelected || isHoveredOnly
-                              ? FontWeight.w900
+                              ? FontWeight.w800
                               : FontWeight.w600,
                           fontSize: isSelected
-                              ? 18
+                              ? 14
                               : isHoveredOnly
-                                  ? 18
-                                  : 16,
+                                  ? 14
+                                  : 12,
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
+                          padding: const EdgeInsets.only(left: 4.0),
                           child: Text(widget.label),
                         ),
                       ),
