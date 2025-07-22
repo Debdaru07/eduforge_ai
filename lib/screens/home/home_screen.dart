@@ -1,6 +1,6 @@
 import 'package:aspirants_ai/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import '../widgets/sidebar.dart';
+import '../../widgets/sidebar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
