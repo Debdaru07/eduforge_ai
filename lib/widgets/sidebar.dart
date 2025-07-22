@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:aspirants_ai/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -88,7 +90,7 @@ class Sidebar extends StatelessWidget {
   }
 }
 
-class SidebarItem extends StatelessWidget {
+class SidebarItem extends StatefulWidget {
   final IconData icon;
   final String label;
   final bool isCollapsed;
@@ -103,42 +105,87 @@ class SidebarItem extends StatelessWidget {
   });
 
   @override
+  State<SidebarItem> createState() => _SidebarItemState();
+}
+
+class _SidebarItemState extends State<SidebarItem> {
+  bool isHovered = false;
+
+  @override
   Widget build(BuildContext context) {
     final screenProvider = Provider.of<ScreenSwitchProvider>(context);
-    final bool selected = screenProvider.selectedIndex == index;
+    final bool isSelected = screenProvider.selectedIndex == widget.index;
+    final bool isHoveredOnly = isHovered && !isSelected;
 
-    return InkWell(
-      onTap: () => screenProvider.setSelectedIndex(index),
-      hoverColor: AspirantsAIPalette.grey100,
-      child: Container(
-        color: selected ? AspirantsAIPalette.grey100.withOpacity(0.3) : null,
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Row(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: isCollapsed ? 16.0 : 24.0),
-              child: Icon(
-                icon,
-                color: selected
-                    ? AspirantsAIPalette.darkGrey
-                    : AspirantsAIPalette.darkGrey.withOpacity(0.6),
-              ),
-            ),
-            if (!isCollapsed)
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => isHovered = true),
+      onExit: (_) => setState(() => isHovered = false),
+      child: GestureDetector(
+        onTap: () => screenProvider.setSelectedIndex(widget.index),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 100),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+          decoration: isHoveredOnly
+              ? BoxDecoration(
+                  color: AspirantsAIPalette.beige.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(12),
+                )
+              : const BoxDecoration(),
+          clipBehavior: Clip.antiAlias,
+          child: Stack(
+            children: [
+              if (isHoveredOnly)
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+                  child: Container(color: Colors.transparent),
+                ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    color: selected
-                        ? AspirantsAIPalette.darkGrey
-                        : AspirantsAIPalette.darkGrey.withOpacity(0.6),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                  ),
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: widget.isCollapsed ? 16.0 : 24.0,
+                      ),
+                      child: Icon(
+                        widget.icon,
+                        size: isSelected
+                            ? 24
+                            : isHoveredOnly
+                                ? 26
+                                : 24,
+                        color: AspirantsAIPalette.darkGrey.withOpacity(
+                          isSelected ? 1 : 0.6,
+                        ),
+                      ),
+                    ),
+                    if (!widget.isCollapsed)
+                      AnimatedDefaultTextStyle(
+                        duration: const Duration(milliseconds: 100),
+                        style: TextStyle(
+                          color: AspirantsAIPalette.darkGrey.withOpacity(
+                            isSelected ? 1 : 0.6,
+                          ),
+                          fontWeight: isSelected || isHoveredOnly
+                              ? FontWeight.w900
+                              : FontWeight.w600,
+                          fontSize: isSelected
+                              ? 18
+                              : isHoveredOnly
+                                  ? 18
+                                  : 16,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(widget.label),
+                        ),
+                      ),
+                  ],
                 ),
               ),
-          ],
+            ],
+          ),
         ),
       ),
     );
