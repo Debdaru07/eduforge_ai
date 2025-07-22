@@ -28,6 +28,13 @@ class Sidebar extends StatelessWidget {
                 if (!isCollapsed)
                   Row(
                     children: [
+                      Image.asset(
+                        'assets/images/logos/logo_coffee.jpeg',
+                        width: 24,
+                        height: 24,
+                        fit: BoxFit.contain,
+                      ),
+                      const SizedBox(width: 4,),
                       Text(
                         'Aspirants AI',
                         style: AspirantsAITextStyles.labelLarge.copyWith(
