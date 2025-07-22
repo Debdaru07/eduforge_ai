@@ -18,9 +18,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       name: 'ask_ai',
       path: '/ask-ai',
-      builder: (context, state) {
-        return AskAI();
-      },
+      builder: (context, state) => const AskAI(),
     ),
     GoRoute(
       name: 'assistants',
@@ -35,9 +33,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       name: 'quiz',
       path: '/quiz',
-      builder: (context, state) {
-        return Quiz();
-      },
+      builder: (context, state) => const Quiz(),
     ),
     GoRoute(
       name: 'upload',

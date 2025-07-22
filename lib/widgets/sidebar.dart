@@ -1,8 +1,8 @@
 import 'package:aspirants_ai/theme/app_colors.dart';
-import 'package:aspirants_ai/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import '../theme/app_text_styles.dart';
+import '../view_model/app_providers/screen_switch_provider.dart';
 
 class Sidebar extends StatelessWidget {
   final bool isCollapsed;
@@ -23,26 +23,65 @@ class Sidebar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                if(isCollapsed == false)
-                Row(
-                  children: [
-                    Text('Aspirants AI', style: AspirantsAITextStyles.labelLarge.copyWith(fontSize: 14, fontWeight: FontWeight.w600)),
-                  ],
-                ),
+                if (!isCollapsed)
+                  Row(
+                    children: [
+                      Text(
+                        'Aspirants AI',
+                        style: AspirantsAITextStyles.labelLarge.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
                 IconButton(
-                  icon: Icon(isCollapsed ? Icons.menu : Icons.close_fullscreen, size: 18,),
+                  icon: Icon(
+                    isCollapsed ? Icons.menu : Icons.close_fullscreen,
+                    size: 18,
+                  ),
                   onPressed: onToggle,
                 ),
               ],
             ),
           ),
           const SizedBox(height: 20),
-          SidebarItem(icon: Icons.home, label: 'Home', isCollapsed: isCollapsed),
-          SidebarItem(icon: Icons.chat, label: 'Ask AI', isCollapsed: isCollapsed),
-          SidebarItem(icon: Icons.quiz, label: 'Quiz', isCollapsed: isCollapsed),
-          SidebarItem(icon: Icons.upload_file, label: 'Upload', isCollapsed: isCollapsed),
-          SidebarItem(icon: Icons.feedback, label: 'Feedback', isCollapsed: isCollapsed),
-          SidebarItem(icon: Icons.settings, label: 'Assistants', isCollapsed: isCollapsed),
+          SidebarItem(
+            icon: Icons.home,
+            label: 'Home',
+            isCollapsed: isCollapsed,
+            index: 0,
+          ),
+          SidebarItem(
+            icon: Icons.chat,
+            label: 'Ask AI',
+            isCollapsed: isCollapsed,
+            index: 1,
+          ),
+          SidebarItem(
+            icon: Icons.quiz,
+            label: 'Quiz',
+            isCollapsed: isCollapsed,
+            index: 2,
+          ),
+          SidebarItem(
+            icon: Icons.upload_file,
+            label: 'Upload',
+            isCollapsed: isCollapsed,
+            index: 3,
+          ),
+          SidebarItem(
+            icon: Icons.feedback,
+            label: 'Feedback',
+            isCollapsed: isCollapsed,
+            index: 4,
+          ),
+          SidebarItem(
+            icon: Icons.settings,
+            label: 'Assistants',
+            isCollapsed: isCollapsed,
+            index: 5,
+          ),
         ],
       ),
     );
@@ -53,35 +92,55 @@ class SidebarItem extends StatelessWidget {
   final IconData icon;
   final String label;
   final bool isCollapsed;
+  final int index;
 
   const SidebarItem({
     super.key,
     required this.icon,
     required this.label,
-    required this.isCollapsed
+    required this.isCollapsed,
+    required this.index,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      horizontalTitleGap: 0,
-      leading: Icon(
-        icon,
-        color: AspirantsAIPalette.darkGrey.withOpacity(0.6), // Dark Gray
-      ),
-      minLeadingWidth: 10,
-      title: isCollapsed ? null : Padding(
-        padding: const EdgeInsets.only(left: 8.0),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: AspirantsAIPalette.darkGrey.withOpacity(0.6), // Dark Gray
-            fontWeight: FontWeight.w700,
-            fontSize: 16
-          ),
+    final screenProvider = Provider.of<ScreenSwitchProvider>(context);
+    final bool selected = screenProvider.selectedIndex == index;
+
+    return InkWell(
+      onTap: () => screenProvider.setSelectedIndex(index),
+      hoverColor: AspirantsAIPalette.grey100,
+      child: Container(
+        color: selected ? AspirantsAIPalette.grey100.withOpacity(0.3) : null,
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: isCollapsed ? 16.0 : 24.0),
+              child: Icon(
+                icon,
+                color: selected
+                    ? AspirantsAIPalette.darkGrey
+                    : AspirantsAIPalette.darkGrey.withOpacity(0.6),
+              ),
+            ),
+            if (!isCollapsed)
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    color: selected
+                        ? AspirantsAIPalette.darkGrey
+                        : AspirantsAIPalette.darkGrey.withOpacity(0.6),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+          ],
         ),
       ),
-      hoverColor: AspirantsAIPalette.grey100, // Slightly darker beige
     );
   }
 }

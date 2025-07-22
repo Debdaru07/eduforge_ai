@@ -1,28 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
-import 'routes/app_router.dart';
 import 'theme/app_theme.dart';
+import 'view_model/app_providers/screen_switch_provider.dart';
+import 'widgets/sidebar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const AIApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ScreenSwitchProvider(),
+      child: const AIApp(),
+    ),
+  );
 }
 
-class AIApp extends StatelessWidget {
+class AIApp extends StatefulWidget {
   const AIApp({super.key});
 
   @override
+  State<AIApp> createState() => _AIAppState();
+}
+
+class _AIAppState extends State<AIApp> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       theme: AspirantsTheme.light,
       darkTheme: AspirantsTheme.dark,
-      routerConfig: appRouter
+      home: Consumer<ScreenSwitchProvider>(
+        builder: (_, provider, __) => Scaffold(
+          body: Row(
+            children: [
+              Sidebar(
+                isCollapsed: provider.isCollapsed,
+                onToggle: provider.toggleSidebar,
+              ),
+              Expanded(
+                child: provider.screens[provider.selectedIndex],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
