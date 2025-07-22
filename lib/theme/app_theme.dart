@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 import '../fonts/text_theme.dart';
 
-class EduForgeTheme {
+class AspirantsTheme {
   static ThemeData light = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: AspirantsAIPalette.white,

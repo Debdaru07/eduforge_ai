@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'screens/home_screen.dart';
+import 'theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,15 +20,8 @@ class AIApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
-      theme: ThemeData(
-      fontFamily: 'Satoshi',
-        brightness: Brightness.light,
-      ),
-      darkTheme: ThemeData(
-        fontFamily: 'Satoshi',
-        brightness: Brightness.dark,
-      ),
-
+      theme: AspirantsTheme.light,
+      darkTheme: AspirantsTheme.dark,
       home: const HomeScreen(),
     );
   }
