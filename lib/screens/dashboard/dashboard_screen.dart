@@ -25,11 +25,20 @@ class _DashboardState extends State<Dashboard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Welcome back, Arjun!\nReady to ace your UPSC preparation today?',
+              'Welcome back, Arjun!',
               style: TextStyle(
                 fontFamily: 'Satoshi',
-                fontWeight: FontWeight.w500,
-                fontSize: 18,
+                fontWeight: FontWeight.w900,
+                fontSize: 24,
+              ),
+            ),
+            const SizedBox(height: 2),
+            const Text(
+              'Ready to ace your UPSC preparation today ?',
+              style: TextStyle(
+                fontFamily: 'Satoshi',
+                fontWeight: FontWeight.normal,
+                fontSize: 16,
               ),
             ),
             const SizedBox(height: 20),
