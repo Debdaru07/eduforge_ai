@@ -56,40 +56,34 @@ class Sidebar extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           SidebarItem(
-            icon: Icons.home,
-            label: 'Home',
+            icon: Icons.dashboard,
+            label: 'Dashboard',
             isCollapsed: isCollapsed,
             index: 0,
           ),
           SidebarItem(
-            icon: Icons.chat,
-            label: 'Ask AI',
+            icon: Icons.upload_file,
+            label: 'PDF Upload',
             isCollapsed: isCollapsed,
             index: 1,
           ),
           SidebarItem(
             icon: Icons.quiz,
-            label: 'Quiz',
+            label: 'Quiz Interface',
             isCollapsed: isCollapsed,
             index: 2,
           ),
           SidebarItem(
-            icon: Icons.upload_file,
-            label: 'Upload',
+            icon: Icons.play_circle_outline,
+            label: 'Assistant Playground',
             isCollapsed: isCollapsed,
             index: 3,
           ),
           SidebarItem(
-            icon: Icons.feedback,
-            label: 'Feedback',
+            icon: Icons.analytics,
+            label: 'Feedback & Analytics',
             isCollapsed: isCollapsed,
             index: 4,
-          ),
-          SidebarItem(
-            icon: Icons.settings,
-            label: 'Assistants',
-            isCollapsed: isCollapsed,
-            index: 5,
           ),
         ],
       ),
@@ -172,11 +166,11 @@ class _SidebarItemState extends State<SidebarItem> {
                           ),
                           fontWeight: isSelected || isHoveredOnly
                               ? FontWeight.w800
-                              : FontWeight.w600,
+                              : FontWeight.w500,
                           fontSize: isSelected
-                              ? 14
+                              ? 13
                               : isHoveredOnly
-                                  ? 14
+                                  ? 13
                                   : 12,
                         ),
                         child: Padding(

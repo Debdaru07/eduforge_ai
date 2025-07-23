@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../screens/home/home_screen.dart';
-import '../../screens/ask_ai/ask_ai.dart';
-import '../../screens/quiz/quiz.dart';
+import '../../screens/dashboard/dashboard_screen.dart';
 import '../../screens/upload/upload.dart';
+import '../../screens/quiz/quiz.dart';
+import '../../screens/playground/playground.dart';
 import '../../screens/feedback/feedback.dart';
-import '../../screens/assistants/asssistants.dart';
 
 class ScreenSwitchProvider extends ChangeNotifier {
   // Current index
@@ -17,22 +16,20 @@ class ScreenSwitchProvider extends ChangeNotifier {
 
   // All screens listed in order
   final List<Widget> _screens = const [
-    HomeScreen(),
-    AskAI(),
-    Quiz(),
+    Dashboard(),
     Upload(),
+    Quiz(),
+    Playground(),
     FeedbackScreen(),
-    Assistants(),
   ];
   List<Widget> get screens => _screens;
 
   final List<Map<String, dynamic>> _destinations = [
-    {'name': 'Home', 'icon': Icons.home},
-    {'name': 'Ask AI', 'icon': Icons.chat},
-    {'name': 'Quiz', 'icon': Icons.quiz},
-    {'name': 'Upload', 'icon': Icons.upload_file},
-    {'name': 'Feedback', 'icon': Icons.feedback},
-    {'name': 'Assistants', 'icon': Icons.settings},
+    {'name': 'Dashboard', 'icon': Icons.dashboard},
+    {'name': 'PDF Upload', 'icon': Icons.upload_file},
+    {'name': 'Quiz Interface', 'icon': Icons.quiz},
+    {'name': 'Assistant Playground', 'icon': Icons.play_circle_outline},
+    {'name': 'Feedback & Analytics', 'icon': Icons.analytics},
   ];
   List<Map<String, dynamic>> get destinations => _destinations;
 

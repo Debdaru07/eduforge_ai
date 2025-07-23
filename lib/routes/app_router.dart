@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import '../screens/feedback/feedback.dart';
-import '../screens/home/home_screen.dart';
+import '../screens/dashboard/dashboard_screen.dart';
 import '../screens/ask_ai/ask_ai.dart';
 import '../screens/assistants/asssistants.dart';
 import '../screens/quiz/quiz.dart';
@@ -13,7 +13,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       name: 'home',
       path: '/',
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => const Dashboard(),
     ),
     GoRoute(
       name: 'ask_ai',

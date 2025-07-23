@@ -1,14 +1,14 @@
 import 'package:aspirants_ai/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class Dashboard extends StatefulWidget {
+  const Dashboard({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Dashboard> createState() => _DashboardState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _DashboardState extends State<Dashboard> {
   bool isCollapsed = false;
 
   @override
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Expanded(
         child: Center(
           child: Text(
-            'Hello Deb!',
+            'Dashboard',
             style: TextStyle(
               fontFamily: 'Satoshi',
               fontWeight: FontWeight.w500,
