@@ -1,1 +1,45 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"eduforge-ai-dc572","appId":"1:565567142688:android:95eaa2b4b26f24d2c7f545","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"eduforge-ai-dc572","appId":"1:565567142688:ios:095da5ce85f7d337c7f545","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"eduforge-ai-dc572","configurations":{"android":"1:565567142688:android:95eaa2b4b26f24d2c7f545","ios":"1:565567142688:ios:095da5ce85f7d337c7f545","web":"1:565567142688:web:c7b47f70b5d4987ec7f545"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "eduforge-ai-dc572",
+          "appId": "1:565567142688:android:95eaa2b4b26f24d2c7f545",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "eduforge-ai-dc572",
+          "appId": "1:565567142688:ios:095da5ce85f7d337c7f545",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "eduforge-ai-dc572",
+          "configurations": {
+            "android": "1:565567142688:android:95eaa2b4b26f24d2c7f545",
+            "ios": "1:565567142688:ios:095da5ce85f7d337c7f545",
+            "web": "1:565567142688:web:c7b47f70b5d4987ec7f545"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
