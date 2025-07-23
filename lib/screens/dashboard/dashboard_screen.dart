@@ -24,24 +24,32 @@ class _DashboardState extends State<Dashboard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Welcome back, Arjun!',
-              style: TextStyle(
-                fontFamily: 'Satoshi',
-                fontWeight: FontWeight.w900,
-                fontSize: 24,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20, left: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Welcome back, Arjun!',
+                    style: TextStyle(
+                      fontFamily: 'Satoshi',
+                      fontWeight: FontWeight.w900,
+                      fontSize: 24,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  const Text(
+                    'Ready to ace your UPSC preparation today ?',
+                    style: TextStyle(
+                      fontFamily: 'Satoshi',
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 2),
-            const Text(
-              'Ready to ace your UPSC preparation today ?',
-              style: TextStyle(
-                fontFamily: 'Satoshi',
-                fontWeight: FontWeight.normal,
-                fontSize: 16,
-              ),
-            ),
-            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -76,37 +84,44 @@ class _DashboardState extends State<Dashboard> {
             Row(
               children: [
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Recent Quizzes',
-                        style: TextStyle(
-                          fontFamily: 'Satoshi',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                    decoration: BoxDecoration(
+                      color: AspirantsAIPalette.white,
+                      borderRadius: BorderRadius.circular(16), 
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Recent Quizzes',
+                          style: TextStyle(
+                            fontFamily: 'Satoshi',
+                            fontWeight: FontWeight.w800,
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      RecentQuizCard(
-                        title: 'Indian Polity - Fundamentals',
-                        questions: '20 questions',
-                        time: '18 minutes ago',
-                        score: '88%',
-                      ),
-                      RecentQuizCard(
-                        title: 'Modern History - Freedom Struggle',
-                        questions: '15 questions',
-                        time: '2 hours ago',
-                        score: '92%',
-                      ),
-                      RecentQuizCard(
-                        title: 'Geography - Physical Features',
-                        questions: '25 questions',
-                        time: 'Yesterday',
-                        score: '76%',
-                      ),
-                    ],
+                        const SizedBox(height: 10),
+                        RecentQuizCard(
+                          title: 'Indian Polity - Fundamentals',
+                          questions: '20 questions',
+                          time: '18 minutes ago',
+                          score: '88%',
+                        ),
+                        RecentQuizCard(
+                          title: 'Modern History - Freedom Struggle',
+                          questions: '15 questions',
+                          time: '2 hours ago',
+                          score: '92%',
+                        ),
+                        RecentQuizCard(
+                          title: 'Geography - Physical Features',
+                          questions: '25 questions',
+                          time: 'Yesterday',
+                          score: '76%',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(width: 20),

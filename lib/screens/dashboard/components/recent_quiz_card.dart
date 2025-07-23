@@ -16,48 +16,57 @@ class RecentQuizCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 10),
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontFamily: 'Satoshi',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                    ),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontFamily: 'Satoshi',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '$questions • $time',
-                    style: const TextStyle(
-                      fontFamily: 'Satoshi',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
+                ),
+                Text(
+                  '$questions • $time',
+                  style: TextStyle(
+                    fontFamily: 'Satoshi',
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12,
+                    color: const Color.fromARGB(255, 125, 124, 124),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Text(
-              score,
-              style: const TextStyle(
-                fontFamily: 'Satoshi',
-                fontWeight: FontWeight.w700,
-                fontSize: 18,
+          ),
+          Column(
+            children: [
+              Text(
+                score,
+                style: const TextStyle(
+                  fontFamily: 'Satoshi',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
+                ),
               ),
-            ),
-          ],
-        ),
+              Text(
+                'score',
+                style: const TextStyle(
+                  fontFamily: 'Satoshi',
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(255, 125, 124, 124),
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
