@@ -1,3 +1,6 @@
+import 'package:aspirants_ai/theme/app_colors.dart';
+import 'package:aspirants_ai/theme/app_text_styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UploadedDocuments extends StatefulWidget {
@@ -11,11 +14,12 @@ class _UploadedDocumentsState extends State<UploadedDocuments> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1,),
-      padding: EdgeInsets.all(32),
+      margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1, vertical: 24),
+      padding: EdgeInsets.only(top: 28, left: 24,),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
+        border: Border.all(width: 1, color: AspirantsAIPalette.grey300),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +28,7 @@ class _UploadedDocumentsState extends State<UploadedDocuments> {
           const Text(
             "Uploaded Documents",
             style: TextStyle(
-              fontSize: 18, 
+              fontSize: 16, 
               fontWeight: FontWeight.w800,
               fontFamily: 'Satoshi',
             ),
@@ -85,44 +89,91 @@ class UploadedDocumentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: iconBgColor,
-            borderRadius: BorderRadius.circular(12),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: iconBgColor,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Icon(icon, color: Colors.red, size: 15,),
           ),
-          child: Icon(icon, color: Colors.black54),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(fileName, style: const TextStyle(fontWeight: FontWeight.w600)),
-              const SizedBox(height: 4),
-              Text("$fileSize • Uploaded $uploadedAgo", style: const TextStyle(color: Colors.grey)),
-            ],
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(fileName, style: AspirantsAITextStyles.bodyMedium.copyWith(fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1,color: AspirantsAIPalette.black)),
+                Text("$fileSize • Uploaded $uploadedAgo", style: AspirantsAITextStyles.bodySmall),
+              ],
+            ),
           ),
-        ),
-        const SizedBox(width: 12),
-        DropdownButton<String>(
-          value: type,
-          style: const TextStyle(color: Colors.black),
-          underline: Container(),
-          borderRadius: BorderRadius.circular(10),
-          items: ["Theory", "MCQ"].map((value) => DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          )).toList(),
-          onChanged: (value) {},
-        ),
-        const SizedBox(width: 8),
-        const Icon(Icons.delete_outline, color: Colors.grey),
-      ],
+          const SizedBox(width: 12),
+          MinimalDropdown(),
+          const SizedBox(width: 8,),
+          const Icon(Icons.delete_outline, color: AspirantsAIPalette.grey300, size: 20,),
+        ],
+      ),
     );
   }
 }
+class MinimalDropdown extends StatefulWidget {
+  const MinimalDropdown({super.key});
 
+  @override
+  _MinimalDropdownState createState() => _MinimalDropdownState();
+}
+
+class _MinimalDropdownState extends State<MinimalDropdown> {
+  String selectedValue = "Theory";
+  final List<String> options = ["Theory", "MCQ"];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 32,
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.grey, width: 1),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: PopupMenuButton<String>(
+        menuPadding: EdgeInsets.zero,
+        onSelected: (value) {
+          setState(() {
+            selectedValue = value;
+          });
+        },
+        itemBuilder: (context) => options
+            .map((item) => PopupMenuItem<String>(
+                  value: item,
+                  child: Text(
+                    item,
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ))
+            .toList(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              selectedValue,
+              style: AspirantsAITextStyles.bodySmall.copyWith(fontSize: 12),
+            ),
+            const Icon(
+              CupertinoIcons.chevron_down,
+              size: 12,
+              color: AspirantsAIPalette.grey300,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
