@@ -82,6 +82,8 @@ class _DashboardState extends State<Dashboard> {
             ),
             const SizedBox(height: 20),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   child: Container(
@@ -126,31 +128,38 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 const SizedBox(width: 20),
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Study Recommendations',
-                        style: TextStyle(
-                          fontFamily: 'Satoshi',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                    decoration: BoxDecoration(
+                      color: AspirantsAIPalette.white,
+                      borderRadius: BorderRadius.circular(16), 
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Study Recommendations',
+                          style: TextStyle(
+                            fontFamily: 'Satoshi',
+                            fontWeight: FontWeight.w800,
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      StudyRecommendationCard(
-                        title: 'Focus on Economics',
-                        description: 'Your recent scores suggest reviewing microeconomics concepts.',
-                      ),
-                      StudyRecommendationCard(
-                        title: 'Great Progress in History',
-                        description: 'Keep up the excellent work with modern Indian history topics.',
-                      ),
-                      StudyRecommendationCard(
-                        title: 'Practice More Geography',
-                        description: 'Consider taking more quizzes on physical geography.',
-                      ),
-                    ],
+                        const SizedBox(height: 10),
+                        StudyRecommendationCard(
+                          title: 'Focus on Economics',
+                          description: 'Your recent scores suggest reviewing microeconomics concepts.',
+                        ),
+                        StudyRecommendationCard(
+                          title: 'Great Progress in History',
+                          description: 'Keep up the excellent work with modern Indian history topics.',
+                        ),
+                        StudyRecommendationCard(
+                          title: 'Practice More Geography',
+                          description: 'Consider taking more quizzes on physical geography.',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

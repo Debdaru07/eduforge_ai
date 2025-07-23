@@ -30,7 +30,8 @@ class RecentQuizCard extends StatelessWidget {
                   style: const TextStyle(
                     fontFamily: 'Satoshi',
                     fontWeight: FontWeight.w500,
-                    fontSize: 14,
+                    fontSize: 16,
+                    letterSpacing: 0.1
                   ),
                 ),
                 Text(
@@ -38,7 +39,7 @@ class RecentQuizCard extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'Satoshi',
                     fontWeight: FontWeight.w400,
-                    fontSize: 12,
+                    fontSize: 13,
                     color: const Color.fromARGB(255, 125, 124, 124),
                   ),
                 ),
