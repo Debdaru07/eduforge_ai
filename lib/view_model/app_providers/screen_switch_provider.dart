@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../screens/dashboard/dashboard_screen.dart';
-import '../../screens/upload/upload.dart';
+import '../../screens/upload_files/upload.dart';
 import '../../screens/quiz/quiz.dart';
 import '../../screens/playground/playground.dart';
 import '../../screens/feedback/feedback.dart';

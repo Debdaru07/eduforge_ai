@@ -4,7 +4,7 @@ import '../screens/dashboard/dashboard_screen.dart';
 import '../screens/ask_ai/ask_ai.dart';
 import '../screens/assistants/asssistants.dart';
 import '../screens/quiz/quiz.dart';
-import '../screens/upload/upload.dart';
+import '../screens/upload_files/upload.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',
