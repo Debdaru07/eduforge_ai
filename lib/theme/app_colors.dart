@@ -13,6 +13,12 @@ class AspirantsAIPalette {
   static const sidebarBackground = Color(0xFFFFFFFF);
   static const coffee = Color(0xFF6F4D36);
 
+  // Additional colors for dashboard
+  static const purple = Color(0xFF6B4E9A); // Matches Documents Uploaded card
+  static const green = Color(0xFF4CAF50);  // Matches Quizzes Completed card
+  static const orange = Color(0xFFFF9800); // Matches AI Assistants card
+  static const grey = Color(0xFF9E9E9E);   // Matches Overall Progress card
+
   // Dark theme
   static const darkBackground = Color(0xFF121212);
   static const darkGrey = Color(0xFF2C2C2C);

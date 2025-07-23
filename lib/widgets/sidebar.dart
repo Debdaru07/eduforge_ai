@@ -16,7 +16,7 @@ class Sidebar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      width: isCollapsed ? MediaQuery.of(context).size.width * 0.0625 : MediaQuery.of(context).size.width * 0.15,
+      width: isCollapsed ? MediaQuery.of(context).size.width * 0.065 : MediaQuery.of(context).size.width * 0.15,
       color: AspirantsAIPalette.white,
       child: Column(
         children: [
