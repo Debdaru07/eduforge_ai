@@ -1,3 +1,4 @@
+import 'package:aspirants_ai/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +38,7 @@ class _AIAppState extends State<AIApp> {
       darkTheme: AspirantsTheme.dark,
       home: Consumer<ScreenSwitchProvider>(
         builder: (_, provider, __) => Scaffold(
+          backgroundColor: AspirantsAIPalette.bodyBackground,
           body: Row(
             children: [
               Sidebar(

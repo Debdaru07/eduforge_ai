@@ -17,7 +17,7 @@ class Sidebar extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       width: isCollapsed ? MediaQuery.of(context).size.width * 0.0625 : MediaQuery.of(context).size.width * 0.15,
-      color: AspirantsAIPalette.beigeDark,
+      color: AspirantsAIPalette.white,
       child: Column(
         children: [
           Padding(

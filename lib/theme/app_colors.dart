@@ -9,6 +9,9 @@ class AspirantsAIPalette {
   static const black = Color(0xFF000000);
   static const beige = Color(0xFFF9F4ED);
   static const beigeDark = Color(0xFFE5E5C2);
+  static const bodyBackground = Color(0xFFFDF8F4);
+  static const sidebarBackground = Color(0xFFFFFFFF);
+  static const coffee = Color(0xFF6F4D36);
 
   // Dark theme
   static const darkBackground = Color(0xFF121212);
