@@ -11,18 +11,23 @@ class _UploadedDocumentsState extends State<UploadedDocuments> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.all(24),
+      margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1,),
+      padding: EdgeInsets.all(32),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const Text(
             "Uploaded Documents",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            style: TextStyle(
+              fontSize: 18, 
+              fontWeight: FontWeight.w800,
+              fontFamily: 'Satoshi',
+            ),
           ),
           const SizedBox(height: 20),
 

@@ -1,8 +1,4 @@
-import 'package:aspirants_ai/theme/app_colors.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'components/pdf_uploader.dart';
 import 'components/uploaded_documents.dart';
 
