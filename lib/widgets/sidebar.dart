@@ -1,8 +1,6 @@
-import 'dart:ui';
-
-import 'package:aspirants_ai/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
 import '../view_model/app_providers/screen_switch_provider.dart';
 
@@ -15,13 +13,13 @@ class Sidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      width: isCollapsed ? MediaQuery.of(context).size.width * 0.065 : MediaQuery.of(context).size.width * 0.15,
+      duration: const Duration(milliseconds: 300),
+      width: isCollapsed ? 78 : MediaQuery.of(context).size.width * 0.2,
       color: AspirantsAIPalette.white,
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -37,8 +35,8 @@ class Sidebar extends StatelessWidget {
                       const SizedBox(width: 4,),
                       Text(
                         'Aspirants AI',
-                        style: AspirantsAITextStyles.labelLarge.copyWith(
-                          fontSize: 14,
+                        style: AspirantsAITextStyles.headlineMedium.copyWith(
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -47,43 +45,54 @@ class Sidebar extends StatelessWidget {
                 IconButton(
                   icon: Icon(
                     isCollapsed ? Icons.menu : Icons.close_fullscreen,
-                    size: 18,
+                    size: 20,
+                    color: AspirantsAIPalette.darkGrey,
                   ),
                   onPressed: onToggle,
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 20),
-          SidebarItem(
-            icon: Icons.dashboard,
-            label: 'Dashboard',
-            isCollapsed: isCollapsed,
-            index: 0,
-          ),
-          SidebarItem(
-            icon: Icons.upload_file,
-            label: 'PDF Upload',
-            isCollapsed: isCollapsed,
-            index: 1,
-          ),
-          SidebarItem(
-            icon: Icons.quiz,
-            label: 'Quiz Interface',
-            isCollapsed: isCollapsed,
-            index: 2,
-          ),
-          SidebarItem(
-            icon: Icons.play_circle_outline,
-            label: 'Assistant Playground',
-            isCollapsed: isCollapsed,
-            index: 3,
-          ),
-          SidebarItem(
-            icon: Icons.analytics,
-            label: 'Feedback & Analytics',
-            isCollapsed: isCollapsed,
-            index: 4,
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(16.0),
+              children: [
+                SidebarItem(
+                  icon: Icons.dashboard,
+                  label: 'Dashboard',
+                  isCollapsed: isCollapsed,
+                  index: 0,
+                ),
+                const SizedBox(height: 8),
+                SidebarItem(
+                  icon: Icons.upload_file,
+                  label: 'PDF Upload',
+                  isCollapsed: isCollapsed,
+                  index: 1,
+                ),
+                const SizedBox(height: 8),
+                SidebarItem(
+                  icon: Icons.quiz,
+                  label: 'Quiz Interface',
+                  isCollapsed: isCollapsed,
+                  index: 2,
+                ),
+                const SizedBox(height: 8),
+                SidebarItem(
+                  icon: Icons.play_circle_outline,
+                  label: 'Assistant Playground',
+                  isCollapsed: isCollapsed,
+                  index: 3,
+                ),
+                const SizedBox(height: 8),
+                SidebarItem(
+                  icon: Icons.analytics,
+                  label: 'Feedback & Analytics',
+                  isCollapsed: isCollapsed,
+                  index: 4,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -125,62 +134,39 @@ class _SidebarItemState extends State<SidebarItem> {
       child: GestureDetector(
         onTap: () => screenProvider.setSelectedIndex(widget.index),
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 100),
-          margin: const EdgeInsets.symmetric(horizontal: 4.0),
-          padding: isHoveredOnly ? EdgeInsets.symmetric(horizontal: 4) : null,
-          decoration: isHoveredOnly
-              ? BoxDecoration(
-                  color: AspirantsAIPalette.beige.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12),
-                )
-              : const BoxDecoration(),
-          clipBehavior: Clip.antiAlias,
-          child: Stack(
+          duration: const Duration(milliseconds: 300),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: isSelected
+                ? AspirantsAIPalette.darkGrey.withOpacity(0.1)
+                : isHoveredOnly
+                    ? AspirantsAIPalette.grey.withOpacity(0.3)
+                    : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: 8,
-                      ),
-                      child: Icon(
-                        widget.icon,
-                        size: isSelected
-                            ? 18
-                            : isHoveredOnly
-                                ? 20
-                                : 18,
-                        color: AspirantsAIPalette.darkGrey.withOpacity(
-                          isSelected ? 1 : 0.4,
-                        ),
-                      ),
-                    ),
-                    if (!widget.isCollapsed)
-                      AnimatedDefaultTextStyle(
-                        duration: const Duration(milliseconds: 100),
-                        style: AspirantsAITextStyles.labelSmall.copyWith(
-                          color: AspirantsAIPalette.darkGrey.withOpacity(
-                            isSelected ? 1 : 0.6,
-                          ),
-                          fontWeight: isSelected || isHoveredOnly
-                              ? FontWeight.w800
-                              : FontWeight.w500,
-                          fontSize: isSelected
-                              ? 13
-                              : isHoveredOnly
-                                  ? 13
-                                  : 12,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 4.0),
-                          child: Text(widget.label),
-                        ),
-                      ),
-                  ],
+              Icon(
+                widget.icon,
+                size: 20,
+                color: AspirantsAIPalette.darkGrey.withOpacity(
+                  isSelected ? 1.0 : 0.7,
                 ),
               ),
+              if (!widget.isCollapsed) ...[
+                const SizedBox(width: 12),
+                AnimatedDefaultTextStyle(
+                  duration: const Duration(milliseconds: 300),
+                  style: AspirantsAITextStyles.bodyMedium.copyWith(
+                    color: AspirantsAIPalette.darkGrey.withOpacity(
+                      isSelected ? 1.0 : 0.7,
+                    ),
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+                    fontSize: 16,
+                  ),
+                  child: Text(widget.label),
+                ),
+              ],
             ],
           ),
         ),
