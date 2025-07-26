@@ -19,7 +19,7 @@ class ScreenSwitchProvider extends ChangeNotifier {
     Dashboard(),
     Upload(),
     Quiz(),
-    Playground(),
+    AssistantPlayground(),
     FeedbackScreen(),
   ];
   List<Widget> get screens => _screens;
