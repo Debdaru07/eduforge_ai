@@ -86,8 +86,9 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       style: TextStyle(
                                         fontFamily: 'Satoshi',
                                         fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                        color: AspirantsAIPalette.black,
+                                        fontWeight: FontWeight.w800,
+                                        color: AspirantsAIPalette.darkGrey,
+                                        letterSpacing: 0.1
                                       ),
                                     ),
                                     const SizedBox(height: 16), // space-y-4
