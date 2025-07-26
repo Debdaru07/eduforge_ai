@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  
-    const firebaseConfig = {
-      apiKey: "AIzaSyDxwiS5IDk2jg_7uRcfH9wXp6YI4FKwWc0",
-      authDomain: "eduforge-ai-dc572.firebaseapp.com",
-      projectId: "eduforge-ai-dc572",
-      storageBucket: "eduforge-ai-dc572.firebasestorage.app",
-      messagingSenderId: "565567142688",
-      appId: "1:565567142688:web:c7b47f70b5d4987ec7f545",
-      measurementId: "G-87W47T5YMQ"
-    };
-  
-    const app = initializeApp(firebaseConfig);
-  </script>
   <head>
-    <!--
-      If you are serving your web app in a path other than the root, change the
-      href value below to reflect the base path you are serving from.
+    <!-- Firebase Initialization -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    
+      const firebaseConfig = {
+        apiKey: "AIzaSyDxwiS5IDk2jg_7uRcfH9wXp6YI4FKwWc0",
+        authDomain: "eduforge-ai-dc572.firebaseapp.com",
+        projectId: "eduforge-ai-dc572",
+        storageBucket: "eduforge-ai-dc572.firebasestorage.app",
+        messagingSenderId: "565567142688",
+        appId: "1:565567142688:web:c7b47f70b5d4987ec7f545",
+        measurementId: "G-87W47T5YMQ"
+      };
+    
+      const app = initializeApp(firebaseConfig);
+    </script>
 
-      The path provided below has to start and end with a slash "/" in order for
-      it to work correctly.
-
-      For more details:
-      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-      This is a placeholder for base href that will be replaced by the value of
-      the `--base-href` argument provided to `flutter build`.
-    -->
+    <!-- Base href for Flutter -->
     <base href="$FLUTTER_BASE_HREF">
 
+    <!-- Standard Meta -->
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta name="description" content="A new Flutter project.">
+    <meta name="description" content="Clear Government Exams">
 
-    <!-- iOS meta tags & icons -->
+    <!-- Open Graph Meta Tags for Link Previews -->
+    <meta property="og:title" content="Aspirants AI" />
+    <meta property="og:description" content="Clear Government Exams" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eduforge-ai-dc572.web.app" />
+    <meta property="og:image" content="https://eduforge-ai-dc572.web.app/assets/images/logos/logo_coffee.jpeg" />
+    <meta property="og:image:alt" content="Aspirants AI Logo" />
+
+    <!-- Twitter Card Meta Tags for X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aspirants AI" />
+    <meta name="twitter:description" content="Clear Government Exams" />
+    <meta name="twitter:image" content="https://eduforge-ai-dc572.web.app/assets/images/logos/logo_coffee.jpeg" />
+
+    <!-- iOS Meta Tags & Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="eduforge_ai">
-    <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <meta name="apple-mobile-web-app-title" content="Aspirants AI">
+    <link rel="apple-touch-icon" href="/icons/Icon-192.png">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="favicon.jpeg"/>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpeg"/>
 
-    <title>eduforge_ai</title>
-    <link rel="manifest" href="manifest.json">
+    <!-- Title -->
+    <title>Aspirants AI</title>
+    <link rel="manifest" href="/manifest.json">
   </head>
   <body>
     <script src="flutter_bootstrap.js" async></script>
