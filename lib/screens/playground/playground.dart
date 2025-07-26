@@ -139,7 +139,7 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                     ElevatedButton(
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: AspirantsAIPalette.purple,
+                                        backgroundColor: AspirantsAIPalette.coffee,
                                         foregroundColor: AspirantsAIPalette.white,
                                         minimumSize: const Size(double.infinity, 40),
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -186,7 +186,7 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       tone: 'Professional tone',
                                       status: 'Active',
                                       statusColor: AspirantsAIPalette.grey100,
-                                      statusTextColor: AspirantsAIPalette.purple,
+                                      statusTextColor: AspirantsAIPalette.coffee,
                                       dotColor: AspirantsAIPalette.green,
                                       onEdit: () => setState(() => _isEditModalVisible = true),
                                     ),
@@ -251,10 +251,10 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       width: 40,
                                       height: 40,
                                       decoration: BoxDecoration(
-                                        color: AspirantsAIPalette.purple.withOpacity(0.1),
+                                        color: AspirantsAIPalette.coffee.withOpacity(0.1),
                                         shape: BoxShape.circle,
                                       ),
-                                      child: const Icon(Icons.smart_toy, color: AspirantsAIPalette.purple, size: 24),
+                                      child: const Icon(Icons.smart_toy, color: AspirantsAIPalette.coffee, size: 24),
                                     ),
                                     const SizedBox(width: 12), // space-x-3
                                     Column(
@@ -296,21 +296,7 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       const SizedBox(height: 16),
                                       _buildChatMessage(
                                         isUser: false,
-                                        message: '''
-Great question! Here are the key differences:
-
-**Fundamental Rights:**
-- Legally enforceable
-- Justiciable (can approach courts)
-- Individual-focused
-- Found in Part III (Articles 12-35)
-
-**Directive Principles:**
-- Not legally enforceable
-- Non-justiciable
-- Society-focused
-- Found in Part IV (Articles 36-51)
-                                        ''',
+                                        message: '''Great question! Here are the key differences:\n\n**Fundamental Rights:**\n- Legally enforceable\n- Justiciable (can approach courts)\n- Individual-focused\n- Found in Part III (Articles 12-35)\n\n**Directive Principles:**\n- Not legally enforceable\n- Non-justiciable\n- Society-focused\n- Found in Part IV (Articles 36-51)''',
                                       ),
                                     ],
                                   ),
@@ -331,7 +317,7 @@ Great question! Here are the key differences:
                                           hintStyle: AspirantsAITextStyles.bodySmall,
                                           border: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(8),
-                                            borderSide: const BorderSide(color: AspirantsAIPalette.grey300),
+                                            borderSide: const BorderSide(color: AspirantsAIPalette.grey300, width: 0.75),
                                           ),
                                           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                                         ),
@@ -339,16 +325,25 @@ Great question! Here are the key differences:
                                       ),
                                     ),
                                     const SizedBox(width: 12), // space-x-3
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: AspirantsAIPalette.purple,
-                                        foregroundColor: AspirantsAIPalette.white,
-                                        minimumSize: const Size(0, 40),
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                    SizedBox(
+                                      width: 60,
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: AspirantsAIPalette.coffee,
+                                          foregroundColor: AspirantsAIPalette.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        child: Transform.rotate(
+                                          angle: -45 * 3.1415927 / 180,
+                                          child: const Icon(Icons.send_rounded, size: 16),
+                                        ),
                                       ),
-                                      child: const Icon(Icons.send, size: 20),
-                                    ),
+                                    )
+
+
                                   ],
                                 ),
                               ),
@@ -472,7 +467,7 @@ Great question! Here are the key differences:
                             ElevatedButton(
                               onPressed: () => setState(() => _isEditModalVisible = false),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: AspirantsAIPalette.purple,
+                                backgroundColor: AspirantsAIPalette.coffee,
                                 foregroundColor: AspirantsAIPalette.white,
                                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -613,10 +608,10 @@ Great question! Here are the key differences:
             width: 32,
             height: 32,
             decoration: BoxDecoration(
-              color: AspirantsAIPalette.purple.withOpacity(0.1),
+              color: AspirantsAIPalette.coffee.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.smart_toy, color: AspirantsAIPalette.purple, size: 16),
+            child: const Icon(Icons.smart_toy, color: AspirantsAIPalette.coffee, size: 16),
           ),
         if (!isUser) const SizedBox(width: 12), // space-x-3
         Flexible(
@@ -624,13 +619,14 @@ Great question! Here are the key differences:
             constraints: const BoxConstraints(maxWidth: 448), // max-w-md
             padding: const EdgeInsets.all(12), // p-3
             decoration: BoxDecoration(
-              color: isUser ? AspirantsAIPalette.purple : AspirantsAIPalette.grey100,
+              color: isUser ? AspirantsAIPalette.coffee : AspirantsAIPalette.grey100,
               borderRadius: BorderRadius.circular(12), // rounded-xl
             ),
             child: Text(
               message,
               style: AspirantsAITextStyles.bodyMedium.copyWith(
                 color: isUser ? AspirantsAIPalette.white : AspirantsAIPalette.black,
+                fontSize: 14,
               ),
             ),
           ),
@@ -649,7 +645,7 @@ Great question! Here are the key differences:
                 'AK',
                 style: TextStyle(
                   fontFamily: 'Satoshi',
-                  fontSize: 12,
+                  fontSize: 14,
                   fontWeight: FontWeight.w500,
                   color: AspirantsAIPalette.white,
                 ),
