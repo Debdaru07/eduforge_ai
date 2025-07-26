@@ -18,7 +18,7 @@ class ScreenSwitchProvider extends ChangeNotifier {
   final List<Widget> _screens = const [
     Dashboard(),
     Upload(),
-    Quiz(),
+    QuizScreen(),
     AssistantPlayground(),
     FeedbackScreen(),
   ];

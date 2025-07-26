@@ -33,7 +33,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       name: 'quiz',
       path: '/quiz',
-      builder: (context, state) => const Quiz(),
+      builder: (context, state) => const QuizScreen(),
     ),
     GoRoute(
       name: 'upload',
