@@ -2,6 +2,8 @@ import 'package:aspirants_ai/theme/app_colors.dart';
 import 'package:aspirants_ai/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'components/helper.dart';
+import 'components/performance_trend_chart.dart';
+import 'components/subject_accuracy_chart.dart';
 
 class FeedbackScreen extends StatefulWidget {
   const FeedbackScreen({super.key});
@@ -15,7 +17,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final crossAxisCount = screenWidth > 1024 ? 4 : 2;
-
     final padding = screenWidth > 768 ? 32.0 : 16.0;
 
     return Scaffold(
@@ -124,7 +125,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 child: buildChartCard(
                                   context,
                                   'Performance Trend',
-                                  'Performance Chart Placeholder',
+                                  const PerformanceTrendChart(),
                                 ),
                               ),
                               SizedBox(width: padding),
@@ -132,7 +133,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 child: buildChartCard(
                                   context,
                                   'Subject-wise Accuracy',
-                                  'Subject Chart Placeholder',
+                                  const SubjectAccuracyChart(),
                                 ),
                               ),
                             ],
@@ -142,13 +143,13 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               buildChartCard(
                                 context,
                                 'Performance Trend',
-                                'Performance Chart Placeholder',
+                                const PerformanceTrendChart(),
                               ),
                               SizedBox(height: padding),
                               buildChartCard(
                                 context,
                                 'Subject-wise Accuracy',
-                                'Subject Chart Placeholder',
+                                const SubjectAccuracyChart(),
                               ),
                             ],
                           ),
@@ -224,7 +225,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   Widget buildChartCard(
     BuildContext context,
     String title,
-    String placeholder,
+    Widget chartWidget,
   ) {
     final screenWidth = MediaQuery.of(context).size.width;
     final padding = screenWidth > 768 ? 24.0 : 16.0;
@@ -256,18 +257,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
             ),
           ),
           SizedBox(height: padding / 1.5),
-          Container(
-            height: screenWidth > 768 ? 300 : 200,
-            color: AspirantsAIPalette.grey100,
-            child: Center(
-              child: Text(
-                placeholder,
-                style: AspirantsAITextStyles.bodyMedium.copyWith(
-                  fontSize: screenWidth > 768 ? 16 : 14,
-                ),
-              ),
-            ),
-          ),
+          chartWidget,
         ],
       ),
     );

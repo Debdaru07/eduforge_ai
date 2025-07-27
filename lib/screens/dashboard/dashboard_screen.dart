@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aspirants_ai/theme/app_colors.dart';
+import 'package:flutter_remix/flutter_remix.dart';
 import 'components/dashboard_card.dart';
 import 'components/recent_quiz_card.dart';
 import 'components/study_recommendation_card.dart';
@@ -95,25 +96,28 @@ class Dashboard extends StatelessWidget {
         "value": "24",
         "subtext": "+3 this week",
         "color": AspirantsAIPalette.purple,
+        "icon": FlutterRemix.book_open_line,
       },
       {
         "title": "Quizzes Completed",
         "value": "156",
         "subtext": "85% average score",
         "color": AspirantsAIPalette.green,
+        "icon": FlutterRemix.question_answer_line,
       },
       {
         "title": "AI Assistants",
         "value": "8",
         "subtext": "3 active sessions",
         "color": AspirantsAIPalette.orange,
+        "icon": FlutterRemix.robot_line,
       },
       {
         "title": "Overall Progress",
         "value": "92%",
         "subtext": "Great Improvement!",
         "color": AspirantsAIPalette.grey,
-        "icon": Icons.emoji_events,
+        "icon": FlutterRemix.trophy_line,
       },
     ];
 

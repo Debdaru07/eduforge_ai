@@ -19,11 +19,16 @@ class DashboardCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: color,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16), // Apply border radius here
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [color.withOpacity(0.6), color.withOpacity(0.9)],
+          ),
+          borderRadius: BorderRadius.circular(16),
+        ),
         padding: const EdgeInsets.all(12.0),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 6),
@@ -35,14 +40,16 @@ class DashboardCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 45, // square width
-                    height: 45, // square height
+                    width: 45,
+                    height: 45,
                     decoration: BoxDecoration(
-                      color: Colors.white, // background color
-                      borderRadius: BorderRadius.circular(
-                        12,
-                      ), // 20 px border radius
+                      color: Colors.white.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                    child:
+                        icon != null
+                            ? Icon(icon, size: 24, color: Colors.white)
+                            : null,
                   ),
                   Text(
                     value,
