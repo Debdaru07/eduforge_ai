@@ -60,6 +60,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                     mainAxisSpacing: 24,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
+                    padding: EdgeInsets.zero,
                     children: [
                       FeedbackHelpers.buildOverviewCard(
                         icon: Icons.check,

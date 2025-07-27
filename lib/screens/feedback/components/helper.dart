@@ -28,25 +28,26 @@ class FeedbackHelpers {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 width: 48,
-                height: 48, // w-12 h-12
+                height: 48,
                 decoration: BoxDecoration(
                   color: iconBgColor,
-                  borderRadius: BorderRadius.circular(8), // rounded-lg
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                child: Icon(icon, color: iconColor, size: 24), // ri-xl
+                child: Icon(icon, color: iconColor, size: 24),
               ),
               Text(
                 value,
                 style: TextStyle(
                   fontFamily: 'Satoshi',
                   fontSize: 24, // text-2xl
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w900,
                   color: AspirantsAIPalette.black,
                 ),
               ),
@@ -57,7 +58,7 @@ class FeedbackHelpers {
             title,
             style: TextStyle(
               fontFamily: 'Satoshi',
-              fontSize: 18, // text-lg
+              fontSize: 16, // text-lg
               fontWeight: FontWeight.w600,
               color: AspirantsAIPalette.black,
             ),
@@ -67,6 +68,7 @@ class FeedbackHelpers {
             subtitle,
             style: AspirantsAITextStyles.bodySmall.copyWith(
               color: subtitleColor,
+              fontSize: 13,
             ),
           ),
         ],
