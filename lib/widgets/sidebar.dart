@@ -15,14 +15,12 @@ class Sidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    final screenProvider = Provider.of<ScreenSwitchProvider>(context);
 
-    // ✅ Clamp to avoid RenderFlex overflow
     double sidebarWidth =
-        isCollapsed
-            ? 78
-            : (screenWidth * 0.2).clamp(200.0, 280.0); // Safe range for web
+        isCollapsed ? 78 : (screenWidth * 0.2).clamp(200.0, 280.0);
     if (screenWidth < 800) {
-      sidebarWidth = isCollapsed ? 78 : 240; // Fixed for mobile
+      sidebarWidth = isCollapsed ? 78 : 240;
     }
 
     return AnimatedContainer(
@@ -145,6 +143,14 @@ class Sidebar extends StatelessWidget {
                   index: 4,
                   tooltipMessage: 'Track your performance',
                 ),
+                const SizedBox(height: 8),
+                const Divider(thickness: 1, color: AspirantsAIPalette.grey300),
+                if (isCollapsed == false) ...[
+                  InkWell(
+                    onTap: () => screenProvider.setSelectedIndex(5),
+                    child: Text('New Chat'),
+                  ),
+                ],
               ],
             ),
           ),
@@ -262,7 +268,7 @@ class _SidebarItemState extends State<SidebarItem> {
       child: GestureDetector(
         onTap: () {
           screenProvider.setSelectedIndex(widget.index);
-          // ✅ DO NOT toggle sidebar on collapsed state
+          // ✅ DO NOT toggle sidebar on collapsed
         },
         child: Tooltip(
           message: widget.isCollapsed ? widget.tooltipMessage : '',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../screens/chat/chat_screen.dart';
 import '../../screens/dashboard/dashboard_screen.dart';
 import '../../screens/upload_files/upload.dart';
 import '../../screens/quiz/quiz.dart';
@@ -21,6 +22,7 @@ class ScreenSwitchProvider extends ChangeNotifier {
     QuizScreen(),
     AssistantPlayground(),
     FeedbackScreen(),
+    ChatScreen(),
   ];
   List<Widget> get screens => _screens;
 
