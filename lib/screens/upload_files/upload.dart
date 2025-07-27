@@ -12,11 +12,21 @@ class Upload extends StatefulWidget {
 class _UploadState extends State<Upload> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    bool isMobile = width < 800; // breakpoint for responsiveness
+
     return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(
+        horizontal: isMobile ? 12 : width * 0.05,
+        vertical: isMobile ? 12 : 20,
+      ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [PDFUploader(), UploadedDocuments()],
+        children: [
+          PDFUploader(isMobile: isMobile),
+          const SizedBox(height: 20),
+          UploadedDocuments(isMobile: isMobile),
+        ],
       ),
     );
   }

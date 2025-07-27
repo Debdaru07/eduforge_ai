@@ -1,48 +1,51 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../../theme/app_colors.dart';
 
 class PDFUploader extends StatelessWidget {
-  const PDFUploader({super.key});
+  final bool isMobile;
+
+  const PDFUploader({super.key, required this.isMobile});
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return Container(
       color: const Color(0xFFFEF9F6), // Light beige background
       width: double.infinity,
       padding: EdgeInsets.symmetric(
-        horizontal: MediaQuery.of(context).size.width * 0.1,
+        horizontal: isMobile ? 16 : width * 0.1,
         vertical: 16,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             'Upload Study Materials',
             style: TextStyle(
-              fontSize: 24,
+              fontSize: isMobile ? 20 : 24,
               fontFamily: 'Satoshi',
               fontWeight: FontWeight.w900,
               color: AspirantsAIPalette.black,
             ),
+            textAlign: TextAlign.start,
           ),
           const SizedBox(height: 8),
-          const Text(
+          Text(
             'Upload your PDFs and documents to create personalized quizzes and get AI assistance',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: isMobile ? 13 : 14,
               fontFamily: 'Satoshi',
               color: Colors.black87,
             ),
+            textAlign: TextAlign.start,
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 24),
           Container(
-            padding: const EdgeInsets.all(32),
-            constraints: BoxConstraints(
-              minWidth: MediaQuery.of(context).size.width * 0.8,
-            ), // ✅ keeps it centered and not full width
+            padding: EdgeInsets.all(isMobile ? 20 : 32),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(24),
@@ -56,48 +59,41 @@ class PDFUploader extends StatelessWidget {
               ],
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(
-                24,
-              ), // ✅ curved edges for dots
+              borderRadius: BorderRadius.circular(24),
               child: DottedBorder(
-                options: RectDottedBorderOptions(
+                options: const RectDottedBorderOptions(
                   color: AspirantsAIPalette.grey300,
                   strokeWidth: 1,
                   dashPattern: [6, 3],
-                  padding: EdgeInsets.all(8), // ✅ prevents clipping of dots
                 ),
                 child: Container(
-                  padding: const EdgeInsets.all(32),
-                  constraints: BoxConstraints(
-                    minWidth: MediaQuery.of(context).size.width * 0.8,
-                  ), // ✅ keeps it centered and not full width
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  padding: EdgeInsets.all(isMobile ? 20 : 32),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(
-                      24,
-                    ), // ✅ matches outer radius
+                    borderRadius: BorderRadius.circular(24),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(20),
+                        padding: EdgeInsets.all(isMobile ? 16 : 20),
                         decoration: const BoxDecoration(
                           color: Color(0xFFF5E9E0),
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(
+                        child: Icon(
                           FontAwesomeIcons.cloudArrowUp,
-                          size: 36,
-                          color: Color(0xFF6E432C),
+                          size: isMobile ? 28 : 36,
+                          color: const Color(0xFF6E432C),
                         ),
                       ),
-                      const SizedBox(height: 20),
-                      const Text(
+                      const SizedBox(height: 16),
+                      Text(
                         'Drop your files here',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: isMobile ? 16 : 20,
                           fontFamily: 'Satoshi',
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -105,10 +101,10 @@ class PDFUploader extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 8),
-                      const Text(
+                      Text(
                         'or click to browse from your computer',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: isMobile ? 14 : 16,
                           fontFamily: 'Satoshi',
                           color: Colors.black87,
                         ),
@@ -117,30 +113,33 @@ class PDFUploader extends StatelessWidget {
                       const SizedBox(height: 20),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF6E432C),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 24,
-                            vertical: 10,
+                          backgroundColor: const Color(0xFF6E432C),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: isMobile ? 20 : 24,
+                            vertical: isMobile ? 8 : 10,
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
                         onPressed: () {},
-                        child: const Text(
+                        child: Text(
                           'Choose Files',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: isMobile ? 14 : 16,
                             fontFamily: 'Satoshi',
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      const Text(
+                      const SizedBox(height: 12),
+                      Text(
                         'Supports PDF, DOC, DOCX files up to 10MB each',
-                        style: TextStyle(fontSize: 14, color: Colors.black54),
+                        style: TextStyle(
+                          fontSize: isMobile ? 12 : 14,
+                          color: Colors.black54,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ],
