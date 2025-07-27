@@ -141,7 +141,7 @@ class _QuizState extends State<QuizScreen> {
                           onPressed:
                               () => setState(() => _isQuizStarted = true),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: AspirantsAIPalette.purple,
+                            backgroundColor: AspirantsAIPalette.coffee,
                             foregroundColor: AspirantsAIPalette.white,
                             padding: EdgeInsets.symmetric(
                               horizontal: padding,
