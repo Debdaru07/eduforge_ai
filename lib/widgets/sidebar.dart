@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../theme/app_colors.dart';
@@ -19,37 +20,58 @@ class Sidebar extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (!isCollapsed)
-                  Row(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset(
-                        'assets/images/logos/logo_coffee.jpeg',
-                        width: 24,
-                        height: 24,
-                        fit: BoxFit.contain,
-                      ),
-                      const SizedBox(width: 4,),
-                      Text(
-                        'Aspirants AI',
-                        style: AspirantsAITextStyles.headlineMedium.copyWith(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
+                      if (!isCollapsed)
+                        Row(
+                          children: [
+                            Image.asset(
+                              'assets/images/logos/aspirants_ai.png',
+                              width: 45,
+                              height: 45,
+                              fit: BoxFit.contain,
+                            ),
+                            Text(
+                              'Aspirants AI',
+                              style: AspirantsAITextStyles.headlineMedium
+                                  .copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                          ],
                         ),
-                      ),
+                      if (isCollapsed)
+                        InkWell(
+                          onTap: onToggle,
+                          child: Image.asset(
+                            'assets/images/logos/aspirants_ai.png',
+                            width: 45,
+                            height: 45,
+                            fit: BoxFit.contain,
+                          ),
+                        )
+                      else
+                        IconButton(
+                          icon: Icon(
+                            CupertinoIcons.bars,
+                            size: 20,
+                            color: AspirantsAIPalette.darkGrey,
+                          ),
+                          onPressed: onToggle,
+                        ),
                     ],
                   ),
-                IconButton(
-                  icon: Icon(
-                    isCollapsed ? Icons.menu : Icons.close_fullscreen,
-                    size: 20,
-                    color: AspirantsAIPalette.darkGrey,
-                  ),
-                  onPressed: onToggle,
                 ),
+                const Divider(thickness: 1, color: AspirantsAIPalette.grey300),
               ],
             ),
           ),
@@ -137,9 +159,10 @@ class _SidebarItemState extends State<SidebarItem> {
           duration: const Duration(milliseconds: 300),
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: isSelected
-                ? AspirantsAIPalette.darkGrey.withOpacity(0.1)
-                : isHoveredOnly
+            color:
+                isSelected
+                    ? AspirantsAIPalette.darkGrey.withOpacity(0.1)
+                    : isHoveredOnly
                     ? AspirantsAIPalette.grey.withOpacity(0.3)
                     : Colors.transparent,
             borderRadius: BorderRadius.circular(8),

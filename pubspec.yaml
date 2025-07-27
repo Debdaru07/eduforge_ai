@@ -1,7 +1,7 @@
 name: aspirants_ai
 description: "Clear Government Exams"
 
-publish_to: 'none' 
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
@@ -25,7 +25,7 @@ dependencies:
   firebase_storage: ^12.4.10
   uuid: ^4.3.3
   syncfusion_flutter_pdf: ^30.1.41
-
+  flutter_svg: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -33,29 +33,29 @@ dev_dependencies:
 
   flutter_lints: ^5.0.0
 
-dependency_o  verrides:   # ✅ Add this section below dependencies & dev_dependencies
+dependency_o  verrides: # ✅ Add this section below dependencies & dev_dependencies
   http: ^1.4.0
 
 flutter:
-
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - assets/
-      - assets/images/
-      - assets/images/logos/
-      - assets/fonts/
-      - assets/fonts/Satoshi_Complete/
-      - assets/fonts/Satoshi_Complete/Fonts/
-      - assets/fonts/Satoshi_Complete/Fonts/OTF/
-      - assets/fonts/Satoshi_Complete/Fonts/TTF/
-      - assets/fonts/Satoshi_Complete/Fonts/WEB/
-      - assets/fonts/Satoshi_Complete/Fonts/WEB/css/
-      - assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/
-      - assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Regular.woff2
-      - assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Bold.woff2
-      - assets/fonts/Satoshi_Complete/License/
+    - assets/
+    - assets/images/
+    - assets/images/logos/
+    - assets/images/logos/aspirants_ai.png
+    - assets/fonts/
+    - assets/fonts/Satoshi_Complete/
+    - assets/fonts/Satoshi_Complete/Fonts/
+    - assets/fonts/Satoshi_Complete/Fonts/OTF/
+    - assets/fonts/Satoshi_Complete/Fonts/TTF/
+    - assets/fonts/Satoshi_Complete/Fonts/WEB/
+    - assets/fonts/Satoshi_Complete/Fonts/WEB/css/
+    - assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/
+    - assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Regular.woff2
+    - assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Bold.woff2
+    - assets/fonts/Satoshi_Complete/License/
 
   fonts:
     - family: Satoshi
