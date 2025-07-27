@@ -23,10 +23,6 @@ class QuizComponents {
         Container(
           height: 40, // py-2
           padding: const EdgeInsets.symmetric(horizontal: 12), // px-3
-          decoration: BoxDecoration(
-            border: Border.all(color: AspirantsAIPalette.grey300),
-            borderRadius: BorderRadius.circular(8), // rounded-button
-          ),
           child: MinimalDropdown(options: options, initialValue: initialValue),
         ),
       ],

@@ -82,6 +82,7 @@ class _QuizState extends State<QuizScreen> {
                           mainAxisSpacing: 16,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
+                          padding: EdgeInsets.zero,
                           children: [
                             QuizComponents.buildQuizFilter(
                               label: 'Topic',
@@ -122,7 +123,6 @@ class _QuizState extends State<QuizScreen> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 24), // mt-6
                         Center(
                           child: ElevatedButton(
                             onPressed:
