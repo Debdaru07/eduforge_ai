@@ -1,5 +1,8 @@
 import 'package:aspirants_ai/theme/app_colors.dart';
+import 'package:aspirants_ai/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../view_model/app_providers/chat_provider.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -10,10 +13,152 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final controller = TextEditingController();
+    final scrollController = ScrollController();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (scrollController.hasClients) {
+        scrollController.jumpTo(scrollController.position.maxScrollExtent);
+      }
+    });
+
     return Scaffold(
       backgroundColor: AspirantsAIPalette.beige,
-      body: Center(child: Text('Hey Chat')),
+      body: Consumer<ChatProvider>(
+        builder:
+            (_, provider, __) => SafeArea(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      controller: scrollController,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                      itemCount: provider.messages.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index == 0) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 12),
+                            child: Text(
+                              "Welcome Debdaru! Are you ready to aspire towards your goals?",
+                              style: AspirantsAITextStyles.bodyLarge.copyWith(
+                                color: AspirantsAIPalette.coffee,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          );
+                        }
+
+                        final message = provider.messages[index - 1];
+                        final isUser = message.role == "user";
+
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          child: Align(
+                            alignment:
+                                isUser
+                                    ? Alignment.centerRight
+                                    : Alignment.center,
+                            child:
+                                isUser
+                                    ? Container(
+                                      padding: const EdgeInsets.all(12),
+                                      constraints: BoxConstraints(
+                                        maxWidth:
+                                            MediaQuery.of(context).size.width *
+                                            0.7,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: AspirantsAIPalette.coffee,
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                      child: Text(
+                                        message.text,
+                                        style: AspirantsAITextStyles.bodyMedium
+                                            .copyWith(
+                                              color: AspirantsAIPalette.white,
+                                            ),
+                                      ),
+                                    )
+                                    : provider.isLoading &&
+                                        index == provider.messages.length
+                                    ? Text(
+                                      "Analyzing...",
+                                      style: AspirantsAITextStyles.bodyMedium
+                                          .copyWith(
+                                            color: AspirantsAIPalette.grey600,
+                                          ),
+                                    )
+                                    : Text(
+                                      message.text,
+                                      style: AspirantsAITextStyles.bodyMedium
+                                          .copyWith(
+                                            color: AspirantsAIPalette.black,
+                                          ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  Container(
+                    color: AspirantsAIPalette.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: controller,
+                            style: AspirantsAITextStyles.bodyMedium,
+                            decoration: InputDecoration(
+                              hintText: "Type your message...",
+                              hintStyle: AspirantsAITextStyles.hint,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(16),
+                                borderSide: BorderSide(
+                                  color: AspirantsAIPalette.grey300,
+                                ),
+                              ),
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 12,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        IconButton(
+                          icon: const Icon(
+                            Icons.send,
+                            color: AspirantsAIPalette.coffee,
+                          ),
+                          onPressed: () {
+                            final text = controller.text.trim();
+                            if (text.isNotEmpty && !provider.isLoading) {
+                              provider.sendMessage(text);
+                              controller.clear();
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+      ),
     );
   }
 }
