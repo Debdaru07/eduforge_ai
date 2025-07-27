@@ -14,9 +14,16 @@ class Sidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double sidebarWidth = isCollapsed ? 78 : screenWidth * 0.2;
+
+    if (screenWidth < 800) {
+      sidebarWidth = isCollapsed ? 78 : 240; // Fixed width for small screens
+    }
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      width: isCollapsed ? 78 : MediaQuery.of(context).size.width * 0.2,
+      width: sidebarWidth,
       color: AspirantsAIPalette.white,
       child: Column(
         children: [
@@ -155,10 +162,7 @@ class Sidebar extends StatelessWidget {
                     if (isCollapsed == false) ...[
                       const SizedBox(width: 8),
                       SizedBox(
-                        width:
-                            isCollapsed
-                                ? 78
-                                : MediaQuery.of(context).size.width * 0.2 - 80,
+                        width: sidebarWidth - 80,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
