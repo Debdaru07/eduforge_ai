@@ -51,22 +51,34 @@ class Sidebar extends StatelessWidget {
                           ],
                         ),
                       if (isCollapsed)
-                        InkWell(
-                          onTap: onToggle,
-                          child: Image.asset(
-                            'assets/images/logos/aspirants_ai.png',
-                            width: 45,
-                            height: 45,
-                            fit: BoxFit.contain,
+                        CommonHoverActionItem(
+                          message: 'Expand',
+                          onTap: () {
+                            print('Sidebar Open');
+                          },
+                          icon: InkWell(
+                            onTap: onToggle,
+                            child: Image.asset(
+                              'assets/images/logos/aspirants_ai.png',
+                              width: 45,
+                              height: 45,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         )
                       else
-                        InkWell(
-                          onTap: onToggle,
-                          child: Image.network(
-                            'https://img.icons8.com/ios-filled/100/000000/open-book.png',
-                            height: 20,
-                            width: 20,
+                        CommonHoverActionItem(
+                          message: 'Collapse',
+                          onTap: () {
+                            print('Sidebar Close');
+                          },
+                          icon: InkWell(
+                            onTap: onToggle,
+                            child: Image.network(
+                              'https://img.icons8.com/ios-filled/100/000000/open-book.png',
+                              height: 20,
+                              width: 20,
+                            ),
                           ),
                         ),
                     ],
@@ -171,16 +183,17 @@ class Sidebar extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            HoverSignOutIcon(
+                            CommonHoverActionItem(
+                              message: 'Sign Out',
                               onTap: () {
                                 print('Sign out tapped');
                               },
+                              icon: Icon(
+                                Icons.door_back_door_outlined,
+                                size: 20,
+                                color: AspirantsAIPalette.darkGrey,
+                              ),
                             ),
-                            // Icon(
-                            //   Icons.exit_to_app,
-                            //   size: 20,
-                            //   color: AspirantsAIPalette.darkGrey,
-                            // ),
                           ],
                         ),
                       ),

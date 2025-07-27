@@ -1,17 +1,25 @@
+import 'package:aspirants_ai/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
 
-class HoverSignOutIcon extends StatefulWidget {
+class CommonHoverActionItem extends StatefulWidget {
+  final String message;
   final VoidCallback onTap;
+  final Widget icon;
 
-  const HoverSignOutIcon({super.key, required this.onTap});
+  const CommonHoverActionItem({
+    super.key,
+    required this.message,
+    required this.onTap,
+    required this.icon,
+  });
 
   @override
-  _HoverSignOutIconState createState() => _HoverSignOutIconState();
+  _CommonHoverActionItemState createState() => _CommonHoverActionItemState();
 }
 
-class _HoverSignOutIconState extends State<HoverSignOutIcon> {
+class _CommonHoverActionItemState extends State<CommonHoverActionItem> {
   bool _isHovered = false;
 
   @override
@@ -21,26 +29,24 @@ class _HoverSignOutIconState extends State<HoverSignOutIcon> {
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: Tooltip(
-        message: 'Sign out',
+        message: widget.message,
         decoration: BoxDecoration(
           color: Colors.black87,
           borderRadius: BorderRadius.circular(8),
         ),
-        textStyle: const TextStyle(color: Colors.white, fontSize: 14),
-        preferBelow: false, // Show beside or above
+        textStyle: AspirantsAITextStyles.bodySmall.copyWith(
+          color: AspirantsAIPalette.bodyBackground,
+        ),
+        preferBelow: false,
         child: InkWell(
           onTap: widget.onTap,
           borderRadius: BorderRadius.circular(8),
-          splashColor: Colors.grey.withOpacity(0.3),
+          splashColor: AspirantsAIPalette.beigeDark,
           child: AnimatedScale(
-            scale: _isHovered ? 1.2 : 1.0, // Slight zoom effect
+            scale: _isHovered ? 1.2 : 1.0,
             duration: const Duration(milliseconds: 200),
             curve: Curves.easeOut,
-            child: Icon(
-              Icons.exit_to_app,
-              size: 20,
-              color: AspirantsAIPalette.darkGrey,
-            ),
+            child: widget.icon,
           ),
         ),
       ),
