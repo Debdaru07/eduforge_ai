@@ -97,6 +97,7 @@ class Sidebar extends StatelessWidget {
                   label: 'Dashboard',
                   isCollapsed: isCollapsed,
                   index: 0,
+                  tooltipMessage: 'See all the Action Items',
                 ),
                 const SizedBox(height: 8),
                 SidebarItem(
@@ -104,6 +105,7 @@ class Sidebar extends StatelessWidget {
                   label: 'PDF Upload',
                   isCollapsed: isCollapsed,
                   index: 1,
+                  tooltipMessage: 'Upload necessary Files',
                 ),
                 const SizedBox(height: 8),
                 SidebarItem(
@@ -111,6 +113,7 @@ class Sidebar extends StatelessWidget {
                   label: 'Quiz Interface',
                   isCollapsed: isCollapsed,
                   index: 2,
+                  tooltipMessage: 'Take the Quiz',
                 ),
                 const SizedBox(height: 8),
                 SidebarItem(
@@ -118,6 +121,7 @@ class Sidebar extends StatelessWidget {
                   label: 'Assistant Playground',
                   isCollapsed: isCollapsed,
                   index: 3,
+                  tooltipMessage: 'Make your own Tutor Assistant',
                 ),
                 const SizedBox(height: 8),
                 SidebarItem(
@@ -125,6 +129,7 @@ class Sidebar extends StatelessWidget {
                   label: 'Feedback & Analytics',
                   isCollapsed: isCollapsed,
                   index: 4,
+                  tooltipMessage: 'Check your feedback and analytics',
                 ),
               ],
             ),
@@ -215,6 +220,7 @@ class SidebarItem extends StatefulWidget {
   final String label;
   final bool isCollapsed;
   final int index;
+  final String tooltipMessage;
 
   const SidebarItem({
     super.key,
@@ -222,6 +228,7 @@ class SidebarItem extends StatefulWidget {
     required this.label,
     required this.isCollapsed,
     required this.index,
+    required this.tooltipMessage,
   });
 
   @override
@@ -243,42 +250,55 @@ class _SidebarItemState extends State<SidebarItem> {
       onExit: (_) => setState(() => isHovered = false),
       child: GestureDetector(
         onTap: () => screenProvider.setSelectedIndex(widget.index),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        child: Tooltip(
+          message: widget.tooltipMessage,
           decoration: BoxDecoration(
-            color:
-                isSelected
-                    ? AspirantsAIPalette.darkGrey.withOpacity(0.1)
-                    : isHoveredOnly
-                    ? AspirantsAIPalette.grey.withOpacity(0.3)
-                    : Colors.transparent,
+            color: Colors.black87,
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Row(
-            children: [
-              Icon(
-                widget.icon,
-                size: 20,
-                color: AspirantsAIPalette.darkGrey.withOpacity(
-                  isSelected ? 1.0 : 0.7,
-                ),
-              ),
-              if (!widget.isCollapsed) ...[
-                const SizedBox(width: 12),
-                AnimatedDefaultTextStyle(
-                  duration: const Duration(milliseconds: 300),
-                  style: AspirantsAITextStyles.bodyMedium.copyWith(
-                    color: AspirantsAIPalette.darkGrey.withOpacity(
-                      isSelected ? 1.0 : 0.7,
-                    ),
-                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                    fontSize: 16,
+          textStyle: AspirantsAITextStyles.bodySmall.copyWith(
+            color: AspirantsAIPalette.bodyBackground,
+            fontSize: 12,
+          ),
+          preferBelow: true,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color:
+                  isSelected
+                      ? AspirantsAIPalette.darkGrey.withOpacity(0.1)
+                      : isHoveredOnly
+                      ? AspirantsAIPalette.grey.withOpacity(0.3)
+                      : Colors.transparent,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  widget.icon,
+                  size: 20,
+                  color: AspirantsAIPalette.darkGrey.withOpacity(
+                    isSelected ? 1.0 : 0.7,
                   ),
-                  child: Text(widget.label),
                 ),
+                if (!widget.isCollapsed) ...[
+                  const SizedBox(width: 12),
+                  AnimatedDefaultTextStyle(
+                    duration: const Duration(milliseconds: 300),
+                    style: AspirantsAITextStyles.bodyMedium.copyWith(
+                      color: AspirantsAIPalette.darkGrey.withOpacity(
+                        isSelected ? 1.0 : 0.7,
+                      ),
+                      fontWeight:
+                          isSelected ? FontWeight.w600 : FontWeight.w500,
+                      fontSize: 16,
+                    ),
+                    child: Text(widget.label),
+                  ),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),
