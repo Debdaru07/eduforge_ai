@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
 import '../view_model/app_providers/screen_switch_provider.dart';
+import 'hoverable_signout.dart';
 
 class Sidebar extends StatelessWidget {
   final bool isCollapsed;
@@ -60,13 +61,13 @@ class Sidebar extends StatelessWidget {
                           ),
                         )
                       else
-                        IconButton(
-                          icon: Icon(
-                            CupertinoIcons.bars,
-                            size: 20,
-                            color: AspirantsAIPalette.darkGrey,
+                        InkWell(
+                          onTap: onToggle,
+                          child: Image.network(
+                            'https://img.icons8.com/ios-filled/100/000000/open-book.png',
+                            height: 20,
+                            width: 20,
                           ),
-                          onPressed: onToggle,
                         ),
                     ],
                   ),
@@ -115,6 +116,80 @@ class Sidebar extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Divider(thickness: 1, color: AspirantsAIPalette.grey300),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundImage: AssetImage(
+                        'assets/images/display_pic.jpeg',
+                      ),
+                    ),
+                    if (isCollapsed == false) ...[
+                      const SizedBox(width: 8),
+                      SizedBox(
+                        width:
+                            isCollapsed
+                                ? 78
+                                : MediaQuery.of(context).size.width * 0.2 - 80,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'Debdaru Dasgupta',
+                                  style: AspirantsAITextStyles.bodySmall
+                                      .copyWith(
+                                        color: AspirantsAIPalette.black,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                                Text(
+                                  'Free',
+                                  style: AspirantsAITextStyles.bodySmall
+                                      .copyWith(
+                                        color: AspirantsAIPalette.grey600,
+                                        fontSize: 12,
+                                      ),
+                                ),
+                              ],
+                            ),
+                            HoverSignOutIcon(
+                              onTap: () {
+                                print('Sign out tapped');
+                              },
+                            ),
+                            // Icon(
+                            //   Icons.exit_to_app,
+                            //   size: 20,
+                            //   color: AspirantsAIPalette.darkGrey,
+                            // ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+            ],
           ),
         ],
       ),
