@@ -104,7 +104,7 @@ class Sidebar extends StatelessWidget {
           /// ✅ Sidebar Items
           Expanded(
             child: ListView(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               children: [
                 SidebarItem(
                   icon: FlutterRemix.dashboard_line,
