@@ -5,6 +5,7 @@ import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
 import '../view_model/app_providers/screen_switch_provider.dart';
 import 'hoverable_signout.dart';
+import 'package:flutter_remix/flutter_remix.dart';
 
 class Sidebar extends StatelessWidget {
   final bool isCollapsed;
@@ -100,43 +101,43 @@ class Sidebar extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               children: [
                 SidebarItem(
-                  icon: Icons.dashboard,
+                  icon: FlutterRemix.dashboard_line,
                   label: 'Dashboard',
                   isCollapsed: isCollapsed,
                   index: 0,
-                  tooltipMessage: 'See all the Action Items',
+                  tooltipMessage: 'View your progress',
                 ),
                 const SizedBox(height: 8),
                 SidebarItem(
-                  icon: Icons.upload_file,
+                  icon: FlutterRemix.upload_cloud_line,
                   label: 'PDF Upload',
                   isCollapsed: isCollapsed,
                   index: 1,
-                  tooltipMessage: 'Upload necessary Files',
+                  tooltipMessage: 'Upload study files',
                 ),
                 const SizedBox(height: 8),
                 SidebarItem(
-                  icon: Icons.quiz,
+                  icon: FlutterRemix.question_line,
                   label: 'Quiz Interface',
                   isCollapsed: isCollapsed,
                   index: 2,
-                  tooltipMessage: 'Take the Quiz',
+                  tooltipMessage: 'Test your knowledge',
                 ),
                 const SizedBox(height: 8),
                 SidebarItem(
-                  icon: Icons.play_circle_outline,
+                  icon: FlutterRemix.robot_line,
                   label: 'Assistant Playground',
                   isCollapsed: isCollapsed,
                   index: 3,
-                  tooltipMessage: 'Make your own Tutor Assistant',
+                  tooltipMessage: 'Create AI tutor',
                 ),
                 const SizedBox(height: 8),
                 SidebarItem(
-                  icon: Icons.analytics,
+                  icon: FlutterRemix.bar_chart_line,
                   label: 'Feedback & Analytics',
                   isCollapsed: isCollapsed,
                   index: 4,
-                  tooltipMessage: 'Check your feedback and analytics',
+                  tooltipMessage: 'Track your performance',
                 ),
               ],
             ),
