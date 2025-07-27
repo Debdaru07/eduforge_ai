@@ -201,7 +201,7 @@ class Sidebar extends StatelessWidget {
                               icon: Icon(
                                 Icons.door_back_door_outlined,
                                 size: 20,
-                                color: AspirantsAIPalette.darkGrey,
+                                color: AspirantsAIPalette.coffee,
                               ),
                             ),
                           ],
@@ -272,34 +272,31 @@ class _SidebarItemState extends State<SidebarItem> {
             decoration: BoxDecoration(
               color:
                   isSelected
-                      ? AspirantsAIPalette.darkGrey.withOpacity(0.1)
+                      ? AspirantsAIPalette.coffee.withOpacity(0.1)
                       : isHoveredOnly
-                      ? AspirantsAIPalette.grey.withOpacity(0.3)
+                      ? AspirantsAIPalette.coffee.withOpacity(0.3)
                       : Colors.transparent,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
               children: [
-                Icon(
-                  widget.icon,
-                  size: 20,
-                  color: AspirantsAIPalette.darkGrey.withOpacity(
-                    isSelected ? 1.0 : 0.7,
-                  ),
-                ),
+                Icon(widget.icon, size: 20, color: AspirantsAIPalette.coffee),
                 if (!widget.isCollapsed) ...[
                   const SizedBox(width: 12),
                   AnimatedDefaultTextStyle(
                     duration: const Duration(milliseconds: 300),
                     style: AspirantsAITextStyles.bodyMedium.copyWith(
-                      color: AspirantsAIPalette.darkGrey.withOpacity(
+                      color: AspirantsAIPalette.coffee.withOpacity(
                         isSelected ? 1.0 : 0.7,
                       ),
                       fontWeight:
                           isSelected ? FontWeight.w600 : FontWeight.w500,
                       fontSize: 16,
                     ),
-                    child: Text(widget.label),
+                    child: Text(
+                      widget.label,
+                      style: AspirantsAITextStyles.bodySmall,
+                    ),
                   ),
                 ],
               ],
