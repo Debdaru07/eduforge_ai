@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../theme/app_colors.dart';
@@ -16,10 +15,14 @@ class Sidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double sidebarWidth = isCollapsed ? 78 : screenWidth * 0.2;
 
+    // ✅ Clamp to avoid RenderFlex overflow
+    double sidebarWidth =
+        isCollapsed
+            ? 78
+            : (screenWidth * 0.2).clamp(200.0, 280.0); // Safe range for web
     if (screenWidth < 800) {
-      sidebarWidth = isCollapsed ? 78 : 240; // Fixed width for small screens
+      sidebarWidth = isCollapsed ? 78 : 240; // Fixed for mobile
     }
 
     return AnimatedContainer(
@@ -28,10 +31,10 @@ class Sidebar extends StatelessWidget {
       color: AspirantsAIPalette.white,
       child: Column(
         children: [
+          /// ✅ Header Section (Logo + Toggle)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
@@ -48,6 +51,7 @@ class Sidebar extends StatelessWidget {
                               height: 45,
                               fit: BoxFit.contain,
                             ),
+                            const SizedBox(width: 8),
                             Text(
                               'Aspirants AI',
                               style: AspirantsAITextStyles.headlineMedium
@@ -96,6 +100,8 @@ class Sidebar extends StatelessWidget {
               ],
             ),
           ),
+
+          /// ✅ Sidebar Items
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(16.0),
@@ -142,62 +148,62 @@ class Sidebar extends StatelessWidget {
               ],
             ),
           ),
+
+          /// ✅ User Info Section
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Divider(thickness: 1, color: AspirantsAIPalette.grey300),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 20,
                       backgroundImage: AssetImage(
                         'assets/images/display_pic.jpeg',
                       ),
                     ),
-                    if (isCollapsed == false) ...[
+                    if (!isCollapsed) ...[
                       const SizedBox(width: 8),
-                      SizedBox(
-                        width: sidebarWidth - 80,
+                      Expanded(
+                        // ✅ Added to prevent overflow
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  'Debdaru Dasgupta',
-                                  style: AspirantsAITextStyles.bodySmall
-                                      .copyWith(
-                                        color: AspirantsAIPalette.black,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
-                                Text(
-                                  'Free',
-                                  style: AspirantsAITextStyles.bodySmall
-                                      .copyWith(
-                                        color: AspirantsAIPalette.grey600,
-                                        fontSize: 12,
-                                      ),
-                                ),
-                              ],
+                            Flexible(
+                              // ✅ Added so text wraps if needed
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Debdaru Dasgupta',
+                                    overflow:
+                                        TextOverflow
+                                            .ellipsis, // ✅ Safe truncation
+                                    style: AspirantsAITextStyles.bodySmall
+                                        .copyWith(
+                                          color: AspirantsAIPalette.black,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Free',
+                                    style: AspirantsAITextStyles.bodySmall
+                                        .copyWith(
+                                          color: AspirantsAIPalette.grey600,
+                                          fontSize: 12,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
+                            const SizedBox(width: 8),
                             CommonHoverActionItem(
                               message: 'Sign Out',
-                              onTap: () {
-                                print('Sign out tapped');
-                              },
+                              onTap: () => print('Sign out tapped'),
                               icon: Icon(
                                 Icons.door_back_door_outlined,
                                 size: 20,
@@ -220,6 +226,7 @@ class Sidebar extends StatelessWidget {
   }
 }
 
+/// ✅ Sidebar Item Fix: Navigation without toggle
 class SidebarItem extends StatefulWidget {
   final IconData icon;
   final String label;
@@ -247,16 +254,18 @@ class _SidebarItemState extends State<SidebarItem> {
   Widget build(BuildContext context) {
     final screenProvider = Provider.of<ScreenSwitchProvider>(context);
     final bool isSelected = screenProvider.selectedIndex == widget.index;
-    final bool isHoveredOnly = isHovered && !isSelected;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => isHovered = true),
       onExit: (_) => setState(() => isHovered = false),
       child: GestureDetector(
-        onTap: () => screenProvider.setSelectedIndex(widget.index),
+        onTap: () {
+          screenProvider.setSelectedIndex(widget.index);
+          // ✅ DO NOT toggle sidebar on collapsed state
+        },
         child: Tooltip(
-          message: widget.tooltipMessage,
+          message: widget.isCollapsed ? widget.tooltipMessage : '',
           decoration: BoxDecoration(
             color: Colors.black87,
             borderRadius: BorderRadius.circular(8),
@@ -265,7 +274,6 @@ class _SidebarItemState extends State<SidebarItem> {
             color: AspirantsAIPalette.bodyBackground,
             fontSize: 12,
           ),
-          preferBelow: true,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -273,29 +281,34 @@ class _SidebarItemState extends State<SidebarItem> {
               color:
                   isSelected
                       ? AspirantsAIPalette.coffee.withOpacity(0.1)
-                      : isHoveredOnly
+                      : isHovered
                       ? AspirantsAIPalette.coffee.withOpacity(0.3)
                       : Colors.transparent,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Icon(widget.icon, size: 20, color: AspirantsAIPalette.coffee),
                 if (!widget.isCollapsed) ...[
                   const SizedBox(width: 12),
-                  AnimatedDefaultTextStyle(
-                    duration: const Duration(milliseconds: 300),
-                    style: AspirantsAITextStyles.bodyMedium.copyWith(
-                      color: AspirantsAIPalette.coffee.withOpacity(
-                        isSelected ? 1.0 : 0.7,
+                  Flexible(
+                    // ✅ Added to avoid overflow
+                    child: AnimatedDefaultTextStyle(
+                      duration: const Duration(milliseconds: 300),
+                      style: AspirantsAITextStyles.bodyMedium.copyWith(
+                        color: AspirantsAIPalette.coffee.withOpacity(
+                          isSelected ? 1.0 : 0.7,
+                        ),
+                        fontWeight:
+                            isSelected ? FontWeight.w600 : FontWeight.w500,
+                        fontSize: 16,
                       ),
-                      fontWeight:
-                          isSelected ? FontWeight.w600 : FontWeight.w500,
-                      fontSize: 16,
-                    ),
-                    child: Text(
-                      widget.label,
-                      style: AspirantsAITextStyles.bodySmall,
+                      child: Text(
+                        widget.label,
+                        overflow: TextOverflow.ellipsis, // ✅ Truncate if needed
+                        style: AspirantsAITextStyles.bodySmall,
+                      ),
                     ),
                   ),
                 ],

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'theme/app_theme.dart';
 import 'view_model/app_providers/screen_switch_provider.dart';
+import 'widgets/responsive_main_scaffold.dart';
 import 'widgets/sidebar.dart';
 
 void main() async {
@@ -34,19 +35,21 @@ class _AIAppState extends State<AIApp> {
       theme: AspirantsTheme.light,
       darkTheme: AspirantsTheme.dark,
       home: Consumer<ScreenSwitchProvider>(
-        builder:
-            (_, provider, __) => Scaffold(
-              backgroundColor: AspirantsAIPalette.bodyBackground,
-              body: Row(
-                children: [
-                  Sidebar(
-                    isCollapsed: provider.isCollapsed,
-                    onToggle: provider.toggleSidebar,
-                  ),
-                  Expanded(child: provider.screens[provider.selectedIndex]),
-                ],
-              ),
+        builder: (_, provider, __) {
+          return ResponsiveScaffold(
+            isCollapsed: provider.isCollapsed,
+            onToggle: provider.toggleSidebar,
+            sidebarCollapsed: Sidebar(
+              isCollapsed: true,
+              onToggle: provider.toggleSidebar,
             ),
+            sidebarExpanded: Sidebar(
+              isCollapsed: false,
+              onToggle: provider.toggleSidebar,
+            ),
+            body: provider.screens[provider.selectedIndex],
+          );
+        },
       ),
     );
   }
