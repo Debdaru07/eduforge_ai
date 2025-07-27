@@ -9,9 +9,7 @@ import 'widgets/sidebar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     ChangeNotifierProvider(
       create: (context) => ScreenSwitchProvider(),
@@ -30,27 +28,25 @@ class AIApp extends StatefulWidget {
 class _AIAppState extends State<AIApp> {
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       theme: AspirantsTheme.light,
       darkTheme: AspirantsTheme.dark,
       home: Consumer<ScreenSwitchProvider>(
-        builder: (_, provider, __) => Scaffold(
-          backgroundColor: AspirantsAIPalette.bodyBackground,
-          body: Row(
-            children: [
-              Sidebar(
-                isCollapsed: provider.isCollapsed,
-                onToggle: provider.toggleSidebar,
+        builder:
+            (_, provider, __) => Scaffold(
+              backgroundColor: AspirantsAIPalette.bodyBackground,
+              body: Row(
+                children: [
+                  Sidebar(
+                    isCollapsed: provider.isCollapsed,
+                    onToggle: provider.toggleSidebar,
+                  ),
+                  Expanded(child: provider.screens[provider.selectedIndex]),
+                ],
               ),
-              Expanded(
-                child: provider.screens[provider.selectedIndex],
-              ),
-            ],
-          ),
-        ),
+            ),
       ),
     );
   }

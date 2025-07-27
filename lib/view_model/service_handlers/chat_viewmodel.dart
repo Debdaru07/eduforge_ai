@@ -33,7 +33,11 @@ class ChatViewModel with ChangeNotifier {
 
     // 3. Generate response with Gemini
     final contextText = contextChunks.join("\n");
-    final answer = await geminiService.generateAnswer(question, assistantPretext, contextText);
+    final answer = await geminiService.generateAnswer(
+      question,
+      assistantPretext,
+      contextText,
+    );
 
     // 4. Save user and model messages to Firestore
     await firebaseService.saveThread(sessionId, {

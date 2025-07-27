@@ -42,7 +42,9 @@ class DashboardCard extends StatelessWidget {
                         height: 45, // square height
                         decoration: BoxDecoration(
                           color: Colors.white, // background color
-                          borderRadius: BorderRadius.circular(12), // 20 px border radius
+                          borderRadius: BorderRadius.circular(
+                            12,
+                          ), // 20 px border radius
                         ),
                       ),
                       Text(

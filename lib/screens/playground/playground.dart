@@ -22,7 +22,9 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
         padding: const EdgeInsets.all(32.0), // p-8 (8 * 4px = 32px)
         child: Center(
           child: Container(
-            constraints: const BoxConstraints(maxWidth: 1152), // max-w-6xl (72rem = 1152px)
+            constraints: const BoxConstraints(
+              maxWidth: 1152,
+            ), // max-w-6xl (72rem = 1152px)
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -65,14 +67,21 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                               // Assistant Creation Form
                               Container(
                                 padding: const EdgeInsets.all(24), // p-6
-                                margin: const EdgeInsets.only(bottom: 24), // mb-6
+                                margin: const EdgeInsets.only(
+                                  bottom: 24,
+                                ), // mb-6
                                 decoration: BoxDecoration(
                                   color: AspirantsAIPalette.white,
-                                  borderRadius: BorderRadius.circular(12), // rounded-xl
-                                  border: Border.all(color: AspirantsAIPalette.grey300),
+                                  borderRadius: BorderRadius.circular(
+                                    12,
+                                  ), // rounded-xl
+                                  border: Border.all(
+                                    color: AspirantsAIPalette.grey300,
+                                  ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: AspirantsAIPalette.black.withOpacity(0.05),
+                                      color: AspirantsAIPalette.black
+                                          .withOpacity(0.05),
                                       blurRadius: 4,
                                       offset: const Offset(0, 2),
                                     ),
@@ -88,7 +97,7 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                         fontSize: 18,
                                         fontWeight: FontWeight.w800,
                                         color: AspirantsAIPalette.darkGrey,
-                                        letterSpacing: 0.1
+                                        letterSpacing: 0.1,
                                       ),
                                     ),
                                     const SizedBox(height: 16), // space-y-4
@@ -97,12 +106,21 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       child: TextField(
                                         decoration: InputDecoration(
                                           hintText: 'e.g., History Tutor',
-                                          hintStyle: AspirantsAITextStyles.bodySmall,
+                                          hintStyle:
+                                              AspirantsAITextStyles.bodySmall,
                                           border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(8),
-                                            borderSide: const BorderSide(color: AspirantsAIPalette.grey300),
+                                            borderRadius: BorderRadius.circular(
+                                              8,
+                                            ),
+                                            borderSide: const BorderSide(
+                                              color: AspirantsAIPalette.grey300,
+                                            ),
                                           ),
-                                          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                horizontal: 12,
+                                                vertical: 8,
+                                              ),
                                         ),
                                         style: AspirantsAITextStyles.bodySmall,
                                       ),
@@ -111,7 +129,12 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                     _buildFormField(
                                       label: 'Role',
                                       child: MinimalDropdown(
-                                        options: ['Subject Expert', 'Quiz Master', 'Study Planner', 'Doubt Solver'],
+                                        options: [
+                                          'Subject Expert',
+                                          'Quiz Master',
+                                          'Study Planner',
+                                          'Doubt Solver',
+                                        ],
                                         initialValue: 'Subject Expert',
                                       ),
                                     ),
@@ -123,7 +146,7 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                           'All Uploaded Documents',
                                           'Indian Constitution Basics',
                                           'Modern History Notes',
-                                          'Economics MCQs'
+                                          'Economics MCQs',
                                         ],
                                         initialValue: 'All Uploaded Documents',
                                       ),
@@ -132,7 +155,12 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                     _buildFormField(
                                       label: 'Tone',
                                       child: MinimalDropdown(
-                                        options: ['Professional', 'Friendly', 'Encouraging', 'Strict'],
+                                        options: [
+                                          'Professional',
+                                          'Friendly',
+                                          'Encouraging',
+                                          'Strict',
+                                        ],
                                         initialValue: 'Professional',
                                       ),
                                     ),
@@ -140,14 +168,26 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                     ElevatedButton(
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: AspirantsAIPalette.coffee,
-                                        foregroundColor: AspirantsAIPalette.white,
-                                        minimumSize: const Size(double.infinity, 40),
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                        backgroundColor:
+                                            AspirantsAIPalette.coffee,
+                                        foregroundColor:
+                                            AspirantsAIPalette.white,
+                                        minimumSize: const Size(
+                                          double.infinity,
+                                          40,
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            8,
+                                          ),
+                                        ),
                                       ),
                                       child: const Text(
                                         'Create Assistant',
-                                        style: TextStyle(fontFamily: 'Satoshi', fontWeight: FontWeight.w500),
+                                        style: TextStyle(
+                                          fontFamily: 'Satoshi',
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -159,10 +199,13 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                 decoration: BoxDecoration(
                                   color: AspirantsAIPalette.white,
                                   borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(color: AspirantsAIPalette.grey300),
+                                  border: Border.all(
+                                    color: AspirantsAIPalette.grey300,
+                                  ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: AspirantsAIPalette.black.withOpacity(0.05),
+                                      color: AspirantsAIPalette.black
+                                          .withOpacity(0.05),
                                       blurRadius: 4,
                                       offset: const Offset(0, 2),
                                     ),
@@ -187,9 +230,13 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       tone: 'Professional tone',
                                       status: 'Active',
                                       statusColor: AspirantsAIPalette.grey100,
-                                      statusTextColor: AspirantsAIPalette.coffee,
+                                      statusTextColor:
+                                          AspirantsAIPalette.coffee,
                                       dotColor: AspirantsAIPalette.green,
-                                      onEdit: () => setState(() => _isEditModalVisible = true),
+                                      onEdit:
+                                          () => setState(
+                                            () => _isEditModalVisible = true,
+                                          ),
                                     ),
                                     const SizedBox(height: 12),
                                     _buildAssistantItem(
@@ -198,9 +245,13 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       tone: 'Friendly tone',
                                       status: 'Inactive',
                                       statusColor: AspirantsAIPalette.grey100,
-                                      statusTextColor: AspirantsAIPalette.grey600,
+                                      statusTextColor:
+                                          AspirantsAIPalette.grey600,
                                       dotColor: AspirantsAIPalette.grey,
-                                      onEdit: () => setState(() => _isEditModalVisible = true),
+                                      onEdit:
+                                          () => setState(
+                                            () => _isEditModalVisible = true,
+                                          ),
                                     ),
                                     const SizedBox(height: 12),
                                     _buildAssistantItem(
@@ -209,9 +260,13 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       tone: 'Encouraging tone',
                                       status: 'Inactive',
                                       statusColor: AspirantsAIPalette.grey100,
-                                      statusTextColor: AspirantsAIPalette.grey600,
+                                      statusTextColor:
+                                          AspirantsAIPalette.grey600,
                                       dotColor: AspirantsAIPalette.grey,
-                                      onEdit: () => setState(() => _isEditModalVisible = true),
+                                      onEdit:
+                                          () => setState(
+                                            () => _isEditModalVisible = true,
+                                          ),
                                     ),
                                   ],
                                 ),
@@ -229,10 +284,14 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                           decoration: BoxDecoration(
                             color: AspirantsAIPalette.white,
                             borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: AspirantsAIPalette.grey300),
+                            border: Border.all(
+                              color: AspirantsAIPalette.grey300,
+                            ),
                             boxShadow: [
                               BoxShadow(
-                                color: AspirantsAIPalette.black.withOpacity(0.05),
+                                color: AspirantsAIPalette.black.withOpacity(
+                                  0.05,
+                                ),
                                 blurRadius: 4,
                                 offset: const Offset(0, 2),
                               ),
@@ -244,7 +303,11 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                               Container(
                                 padding: const EdgeInsets.all(16), // p-4
                                 decoration: const BoxDecoration(
-                                  border: Border(bottom: BorderSide(color: AspirantsAIPalette.grey300)),
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: AspirantsAIPalette.grey300,
+                                    ),
+                                  ),
                                 ),
                                 child: Row(
                                   children: [
@@ -252,14 +315,20 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       width: 40,
                                       height: 40,
                                       decoration: BoxDecoration(
-                                        color: AspirantsAIPalette.coffee.withOpacity(0.1),
+                                        color: AspirantsAIPalette.coffee
+                                            .withOpacity(0.1),
                                         shape: BoxShape.circle,
                                       ),
-                                      child: const Icon(Icons.smart_toy, color: AspirantsAIPalette.coffee, size: 24),
+                                      child: const Icon(
+                                        Icons.smart_toy,
+                                        color: AspirantsAIPalette.coffee,
+                                        size: 24,
+                                      ),
                                     ),
                                     const SizedBox(width: 12), // space-x-3
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           _selectedAssistant,
@@ -272,7 +341,11 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                         ),
                                         Text(
                                           'Subject Expert • Online',
-                                          style: AspirantsAITextStyles.bodySmall.copyWith(color: AspirantsAIPalette.grey600),
+                                          style: AspirantsAITextStyles.bodySmall
+                                              .copyWith(
+                                                color:
+                                                    AspirantsAIPalette.grey600,
+                                              ),
                                         ),
                                       ],
                                     ),
@@ -287,17 +360,20 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                     children: [
                                       _buildChatMessage(
                                         isUser: false,
-                                        message: 'Hello! I\'m your Polity Expert assistant. I can help you understand Indian Constitution, fundamental rights, governance structures, and more. What would you like to learn today?',
+                                        message:
+                                            'Hello! I\'m your Polity Expert assistant. I can help you understand Indian Constitution, fundamental rights, governance structures, and more. What would you like to learn today?',
                                       ),
                                       const SizedBox(height: 16), // space-y-4
                                       _buildChatMessage(
                                         isUser: true,
-                                        message: 'Can you explain the difference between fundamental rights and directive principles?',
+                                        message:
+                                            'Can you explain the difference between fundamental rights and directive principles?',
                                       ),
                                       const SizedBox(height: 16),
                                       _buildChatMessage(
                                         isUser: false,
-                                        message: '''Great question! Here are the key differences:\n\n**Fundamental Rights:**\n- Legally enforceable\n- Justiciable (can approach courts)\n- Individual-focused\n- Found in Part III (Articles 12-35)\n\n**Directive Principles:**\n- Not legally enforceable\n- Non-justiciable\n- Society-focused\n- Found in Part IV (Articles 36-51)''',
+                                        message:
+                                            '''Great question! Here are the key differences:\n\n**Fundamental Rights:**\n- Legally enforceable\n- Justiciable (can approach courts)\n- Individual-focused\n- Found in Part III (Articles 12-35)\n\n**Directive Principles:**\n- Not legally enforceable\n- Non-justiciable\n- Society-focused\n- Found in Part IV (Articles 36-51)''',
                                       ),
                                     ],
                                   ),
@@ -307,7 +383,11 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                               Container(
                                 padding: const EdgeInsets.all(16), // p-4
                                 decoration: const BoxDecoration(
-                                  border: Border(top: BorderSide(color: AspirantsAIPalette.grey300)),
+                                  border: Border(
+                                    top: BorderSide(
+                                      color: AspirantsAIPalette.grey300,
+                                    ),
+                                  ),
                                 ),
                                 child: Row(
                                   children: [
@@ -315,12 +395,22 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       child: TextField(
                                         decoration: InputDecoration(
                                           hintText: 'Ask a question...',
-                                          hintStyle: AspirantsAITextStyles.bodySmall,
+                                          hintStyle:
+                                              AspirantsAITextStyles.bodySmall,
                                           border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(8),
-                                            borderSide: const BorderSide(color: AspirantsAIPalette.grey300, width: 0.75),
+                                            borderRadius: BorderRadius.circular(
+                                              8,
+                                            ),
+                                            borderSide: const BorderSide(
+                                              color: AspirantsAIPalette.grey300,
+                                              width: 0.75,
+                                            ),
                                           ),
-                                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                horizontal: 16,
+                                                vertical: 8,
+                                              ),
                                         ),
                                         style: AspirantsAITextStyles.bodySmall,
                                       ),
@@ -331,20 +421,25 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                                       child: ElevatedButton(
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
-                                          backgroundColor: AspirantsAIPalette.coffee,
-                                          foregroundColor: AspirantsAIPalette.white,
+                                          backgroundColor:
+                                              AspirantsAIPalette.coffee,
+                                          foregroundColor:
+                                              AspirantsAIPalette.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(4),
+                                            borderRadius: BorderRadius.circular(
+                                              4,
+                                            ),
                                           ),
                                         ),
                                         child: Transform.rotate(
                                           angle: -45 * 3.1415927 / 180,
-                                          child: const Icon(Icons.send_rounded, size: 16),
+                                          child: const Icon(
+                                            Icons.send_rounded,
+                                            size: 16,
+                                          ),
                                         ),
                                       ),
-                                    )
-
-
+                                    ),
                                   ],
                                 ),
                               ),
@@ -361,132 +456,178 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
         ),
       ),
       // Edit Assistant Modal
-      floatingActionButton: _isEditModalVisible
-          ? GestureDetector(
-              onTap: () => setState(() => _isEditModalVisible = false),
-              child: Container(
-                color: AspirantsAIPalette.black.withOpacity(0.5),
-                child: Center(
-                  child: Container(
-                    width: 448, // max-w-md (28rem = 448px)
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      color: AspirantsAIPalette.white,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AspirantsAIPalette.black.withOpacity(0.1),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Edit Assistant',
-                              style: TextStyle(
-                                fontFamily: 'Satoshi',
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                color: AspirantsAIPalette.black,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () => setState(() => _isEditModalVisible = false),
-                              icon: const Icon(Icons.close, color: AspirantsAIPalette.grey600),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 24), // mb-6
-                        _buildFormField(
-                          label: 'Assistant Name',
-                          child: TextField(
-                            controller: TextEditingController(text: 'Quiz Master Pro'),
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: const BorderSide(color: AspirantsAIPalette.grey300),
-                              ),
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                            ),
-                            style: AspirantsAITextStyles.bodySmall,
+      floatingActionButton:
+          _isEditModalVisible
+              ? GestureDetector(
+                onTap: () => setState(() => _isEditModalVisible = false),
+                child: Container(
+                  color: AspirantsAIPalette.black.withOpacity(0.5),
+                  child: Center(
+                    child: Container(
+                      width: 448, // max-w-md (28rem = 448px)
+                      padding: const EdgeInsets.all(24),
+                      decoration: BoxDecoration(
+                        color: AspirantsAIPalette.white,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AspirantsAIPalette.black.withOpacity(0.1),
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        _buildFormField(
-                          label: 'Role',
-                          child: MinimalDropdown(
-                            options: ['Subject Expert', 'Quiz Master', 'Study Planner', 'Doubt Solver'],
-                            initialValue: 'Quiz Master',
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        _buildFormField(
-                          label: 'Dataset',
-                          child: MinimalDropdown(
-                            options: [
-                              'All Uploaded Documents',
-                              'Indian Constitution Basics',
-                              'Modern History Notes',
-                              'Economics MCQs'
-                            ],
-                            initialValue: 'All Uploaded Documents',
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        _buildFormField(
-                          label: 'Tone',
-                          child: MinimalDropdown(
-                            options: ['Professional', 'Friendly', 'Encouraging', 'Strict'],
-                            initialValue: 'Encouraging',
-                          ),
-                        ),
-                        const SizedBox(height: 24), // mt-6
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton(
-                              onPressed: () => setState(() => _isEditModalVisible = false),
-                              style: TextButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                  side: const BorderSide(color: AspirantsAIPalette.grey300),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Edit Assistant',
+                                style: TextStyle(
+                                  fontFamily: 'Satoshi',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                  color: AspirantsAIPalette.black,
                                 ),
                               ),
-                              child: Text(
-                                'Cancel',
-                                style: AspirantsAITextStyles.bodyMedium.copyWith(color: AspirantsAIPalette.grey600),
+                              IconButton(
+                                onPressed:
+                                    () => setState(
+                                      () => _isEditModalVisible = false,
+                                    ),
+                                icon: const Icon(
+                                  Icons.close,
+                                  color: AspirantsAIPalette.grey600,
+                                ),
                               ),
+                            ],
+                          ),
+                          const SizedBox(height: 24), // mb-6
+                          _buildFormField(
+                            label: 'Assistant Name',
+                            child: TextField(
+                              controller: TextEditingController(
+                                text: 'Quiz Master Pro',
+                              ),
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                  borderSide: const BorderSide(
+                                    color: AspirantsAIPalette.grey300,
+                                  ),
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 8,
+                                ),
+                              ),
+                              style: AspirantsAITextStyles.bodySmall,
                             ),
-                            const SizedBox(width: 12), // space-x-3
-                            ElevatedButton(
-                              onPressed: () => setState(() => _isEditModalVisible = false),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AspirantsAIPalette.coffee,
-                                foregroundColor: AspirantsAIPalette.white,
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                              ),
-                              child: Text(
-                                'Save Changes',
-                                style: AspirantsAITextStyles.bodyMedium.copyWith(color: AspirantsAIPalette.white),
-                              ),
+                          ),
+                          const SizedBox(height: 16),
+                          _buildFormField(
+                            label: 'Role',
+                            child: MinimalDropdown(
+                              options: [
+                                'Subject Expert',
+                                'Quiz Master',
+                                'Study Planner',
+                                'Doubt Solver',
+                              ],
+                              initialValue: 'Quiz Master',
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+                          const SizedBox(height: 16),
+                          _buildFormField(
+                            label: 'Dataset',
+                            child: MinimalDropdown(
+                              options: [
+                                'All Uploaded Documents',
+                                'Indian Constitution Basics',
+                                'Modern History Notes',
+                                'Economics MCQs',
+                              ],
+                              initialValue: 'All Uploaded Documents',
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          _buildFormField(
+                            label: 'Tone',
+                            child: MinimalDropdown(
+                              options: [
+                                'Professional',
+                                'Friendly',
+                                'Encouraging',
+                                'Strict',
+                              ],
+                              initialValue: 'Encouraging',
+                            ),
+                          ),
+                          const SizedBox(height: 24), // mt-6
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                onPressed:
+                                    () => setState(
+                                      () => _isEditModalVisible = false,
+                                    ),
+                                style: TextButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 8,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    side: const BorderSide(
+                                      color: AspirantsAIPalette.grey300,
+                                    ),
+                                  ),
+                                ),
+                                child: Text(
+                                  'Cancel',
+                                  style: AspirantsAITextStyles.bodyMedium
+                                      .copyWith(
+                                        color: AspirantsAIPalette.grey600,
+                                      ),
+                                ),
+                              ),
+                              const SizedBox(width: 12), // space-x-3
+                              ElevatedButton(
+                                onPressed:
+                                    () => setState(
+                                      () => _isEditModalVisible = false,
+                                    ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AspirantsAIPalette.coffee,
+                                  foregroundColor: AspirantsAIPalette.white,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 8,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                child: Text(
+                                  'Save Changes',
+                                  style: AspirantsAITextStyles.bodyMedium
+                                      .copyWith(
+                                        color: AspirantsAIPalette.white,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            )
-          : null,
+              )
+              : null,
     );
   }
 
@@ -521,9 +662,17 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
     return Container(
       padding: const EdgeInsets.all(12), // p-3
       decoration: BoxDecoration(
-        color: status == 'Active' ? AspirantsAIPalette.grey100 : AspirantsAIPalette.grey100,
+        color:
+            status == 'Active'
+                ? AspirantsAIPalette.grey100
+                : AspirantsAIPalette.grey100,
         borderRadius: BorderRadius.circular(8), // rounded-lg
-        border: Border.all(color: status == 'Active' ? AspirantsAIPalette.grey300 : AspirantsAIPalette.grey300),
+        border: Border.all(
+          color:
+              status == 'Active'
+                  ? AspirantsAIPalette.grey300
+                  : AspirantsAIPalette.grey300,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -553,13 +702,18 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
           const SizedBox(height: 8), // mb-2
           Text(
             '$role • $tone',
-            style: AspirantsAITextStyles.bodySmall.copyWith(color: AspirantsAIPalette.grey600),
+            style: AspirantsAITextStyles.bodySmall.copyWith(
+              color: AspirantsAIPalette.grey600,
+            ),
           ),
           const SizedBox(height: 8), // mb-2
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), // px-2 py-1
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 4,
+                ), // px-2 py-1
                 decoration: BoxDecoration(
                   color: statusColor,
                   borderRadius: BorderRadius.circular(4),
@@ -589,7 +743,9 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
                   'Delete',
                   style: AspirantsAITextStyles.bodySmall.copyWith(
                     fontSize: 12,
-                    color: AspirantsAIPalette.orange, // Using orange as closest to red600
+                    color:
+                        AspirantsAIPalette
+                            .orange, // Using orange as closest to red600
                   ),
                 ),
               ),
@@ -602,7 +758,8 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
 
   Widget _buildChatMessage({required bool isUser, required String message}) {
     return Row(
-      mainAxisAlignment: isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+      mainAxisAlignment:
+          isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
         if (!isUser)
           Container(
@@ -612,7 +769,11 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
               color: AspirantsAIPalette.coffee.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.smart_toy, color: AspirantsAIPalette.coffee, size: 16),
+            child: const Icon(
+              Icons.smart_toy,
+              color: AspirantsAIPalette.coffee,
+              size: 16,
+            ),
           ),
         if (!isUser) const SizedBox(width: 12), // space-x-3
         Flexible(
@@ -620,13 +781,19 @@ class _AssistantPlaygroundState extends State<AssistantPlayground> {
             constraints: const BoxConstraints(maxWidth: 448), // max-w-md
             padding: const EdgeInsets.all(12), // p-3
             decoration: BoxDecoration(
-              color: isUser ? AspirantsAIPalette.coffee : AspirantsAIPalette.grey100,
+              color:
+                  isUser
+                      ? AspirantsAIPalette.coffee
+                      : AspirantsAIPalette.grey100,
               borderRadius: BorderRadius.circular(12), // rounded-xl
             ),
             child: Text(
               message,
               style: AspirantsAITextStyles.bodyMedium.copyWith(
-                color: isUser ? AspirantsAIPalette.white : AspirantsAIPalette.black,
+                color:
+                    isUser
+                        ? AspirantsAIPalette.white
+                        : AspirantsAIPalette.black,
                 fontSize: 14,
               ),
             ),
@@ -663,7 +830,11 @@ class MinimalDropdown extends StatefulWidget {
   final List<String> options;
   final String initialValue;
 
-  const MinimalDropdown({super.key, required this.options, required this.initialValue});
+  const MinimalDropdown({
+    super.key,
+    required this.options,
+    required this.initialValue,
+  });
 
   @override
   _MinimalDropdownState createState() => _MinimalDropdownState();
@@ -695,15 +866,21 @@ class _MinimalDropdownState extends State<MinimalDropdown> {
             selectedValue = value;
           });
         },
-        itemBuilder: (context) => widget.options
-            .map((item) => PopupMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    item,
-                    style: AspirantsAITextStyles.bodySmall.copyWith(fontSize: 12),
-                  ),
-                ))
-            .toList(),
+        itemBuilder:
+            (context) =>
+                widget.options
+                    .map(
+                      (item) => PopupMenuItem<String>(
+                        value: item,
+                        child: Text(
+                          item,
+                          style: AspirantsAITextStyles.bodySmall.copyWith(
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

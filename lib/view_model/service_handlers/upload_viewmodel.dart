@@ -29,7 +29,7 @@ class UploadViewModel with ChangeNotifier {
       final id = const Uuid().v4();
       await pineconeService.upsertVector(id, embedding, {
         'text': chunk,
-        'assistantId': assistantId
+        'assistantId': assistantId,
       });
     }
 
@@ -37,7 +37,7 @@ class UploadViewModel with ChangeNotifier {
       'fileName': file.path.split('/').last,
       'fileUrl': url,
       'assistantId': assistantId,
-      'createdAt': DateTime.now().toIso8601String()
+      'createdAt': DateTime.now().toIso8601String(),
     }, assistantId);
   }
 }

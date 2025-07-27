@@ -31,7 +31,7 @@ class _DashboardState extends State<Dashboard> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Text(
-                    'Welcome back, Arjun!',
+                    'Welcome back, Debdaru!',
                     style: TextStyle(
                       fontFamily: 'Satoshi',
                       fontWeight: FontWeight.w900,
@@ -87,10 +87,13 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 16,
+                    ),
                     decoration: BoxDecoration(
                       color: AspirantsAIPalette.white,
-                      borderRadius: BorderRadius.circular(16), 
+                      borderRadius: BorderRadius.circular(16),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,10 +132,13 @@ class _DashboardState extends State<Dashboard> {
                 const SizedBox(width: 20),
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 16,
+                    ),
                     decoration: BoxDecoration(
                       color: AspirantsAIPalette.white,
-                      borderRadius: BorderRadius.circular(16), 
+                      borderRadius: BorderRadius.circular(16),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,15 +154,18 @@ class _DashboardState extends State<Dashboard> {
                         const SizedBox(height: 10),
                         StudyRecommendationCard(
                           title: 'Focus on Economics',
-                          description: 'Your recent scores suggest reviewing microeconomics concepts.',
+                          description:
+                              'Your recent scores suggest reviewing microeconomics concepts.',
                         ),
                         StudyRecommendationCard(
                           title: 'Great Progress in History',
-                          description: 'Keep up the excellent work with modern Indian history topics.',
+                          description:
+                              'Keep up the excellent work with modern Indian history topics.',
                         ),
                         StudyRecommendationCard(
                           title: 'Practice More Geography',
-                          description: 'Consider taking more quizzes on physical geography.',
+                          description:
+                              'Consider taking more quizzes on physical geography.',
                         ),
                       ],
                     ),

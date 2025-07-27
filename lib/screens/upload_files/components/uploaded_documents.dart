@@ -14,8 +14,11 @@ class _UploadedDocumentsState extends State<UploadedDocuments> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1, vertical: 24),
-      padding: EdgeInsets.only(top: 28, left: 24,),
+      margin: EdgeInsets.symmetric(
+        horizontal: MediaQuery.of(context).size.width * 0.1,
+        vertical: 24,
+      ),
+      padding: EdgeInsets.only(top: 28, left: 24),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -28,7 +31,7 @@ class _UploadedDocumentsState extends State<UploadedDocuments> {
           const Text(
             "Uploaded Documents",
             style: TextStyle(
-              fontSize: 16, 
+              fontSize: 16,
               fontWeight: FontWeight.w800,
               fontFamily: 'Satoshi',
             ),
@@ -101,27 +104,43 @@ class UploadedDocumentItem extends StatelessWidget {
               color: iconBgColor,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Icon(icon, color: Colors.red, size: 15,),
+            child: Icon(icon, color: Colors.red, size: 15),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(fileName, style: AspirantsAITextStyles.bodyMedium.copyWith(fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1,color: AspirantsAIPalette.black)),
-                Text("$fileSize • Uploaded $uploadedAgo", style: AspirantsAITextStyles.bodySmall),
+                Text(
+                  fileName,
+                  style: AspirantsAITextStyles.bodyMedium.copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 0.1,
+                    color: AspirantsAIPalette.black,
+                  ),
+                ),
+                Text(
+                  "$fileSize • Uploaded $uploadedAgo",
+                  style: AspirantsAITextStyles.bodySmall,
+                ),
               ],
             ),
           ),
           const SizedBox(width: 12),
           MinimalDropdown(),
-          const SizedBox(width: 8,),
-          const Icon(Icons.delete_outline, color: AspirantsAIPalette.grey300, size: 20,),
+          const SizedBox(width: 8),
+          const Icon(
+            Icons.delete_outline,
+            color: AspirantsAIPalette.grey300,
+            size: 20,
+          ),
         ],
       ),
     );
   }
 }
+
 class MinimalDropdown extends StatefulWidget {
   const MinimalDropdown({super.key});
 
@@ -150,15 +169,16 @@ class _MinimalDropdownState extends State<MinimalDropdown> {
             selectedValue = value;
           });
         },
-        itemBuilder: (context) => options
-            .map((item) => PopupMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    item,
-                    style: const TextStyle(fontSize: 12),
-                  ),
-                ))
-            .toList(),
+        itemBuilder:
+            (context) =>
+                options
+                    .map(
+                      (item) => PopupMenuItem<String>(
+                        value: item,
+                        child: Text(item, style: const TextStyle(fontSize: 12)),
+                      ),
+                    )
+                    .toList(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

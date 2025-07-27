@@ -10,8 +10,6 @@ class AskAI extends StatefulWidget {
 class _FeedbackState extends State<AskAI> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('AskAI'),
-    );
+    return const Center(child: Text('AskAI'));
   }
 }

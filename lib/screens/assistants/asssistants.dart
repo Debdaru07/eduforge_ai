@@ -10,8 +10,6 @@ class Assistants extends StatefulWidget {
 class _AssistantsState extends State<Assistants> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Assistants'),
-    );
+    return const Center(child: Text('Assistants'));
   }
 }

@@ -27,10 +27,7 @@ class QuizComponents {
             border: Border.all(color: AspirantsAIPalette.grey300),
             borderRadius: BorderRadius.circular(8), // rounded-button
           ),
-          child: MinimalDropdown(
-            options: options,
-            initialValue: initialValue,
-          ),
+          child: MinimalDropdown(options: options, initialValue: initialValue),
         ),
       ],
     );
@@ -50,7 +47,10 @@ class QuizComponents {
         decoration: BoxDecoration(
           border: Border.all(color: AspirantsAIPalette.grey300),
           borderRadius: BorderRadius.circular(8), // rounded-lg
-          color: isSelected ? AspirantsAIPalette.grey100 : AspirantsAIPalette.white,
+          color:
+              isSelected
+                  ? AspirantsAIPalette.grey100
+                  : AspirantsAIPalette.white,
         ),
         child: Row(
           children: [
@@ -156,7 +156,9 @@ class QuizComponents {
           const SizedBox(height: 8), // mb-2
           Text(
             description,
-            style: AspirantsAITextStyles.bodySmall.copyWith(color: AspirantsAIPalette.grey600),
+            style: AspirantsAITextStyles.bodySmall.copyWith(
+              color: AspirantsAIPalette.grey600,
+            ),
           ),
           if (buttonText.isNotEmpty) ...[
             const SizedBox(height: 8), // mb-2
@@ -182,7 +184,11 @@ class MinimalDropdown extends StatefulWidget {
   final List<String> options;
   final String initialValue;
 
-  const MinimalDropdown({super.key, required this.options, required this.initialValue});
+  const MinimalDropdown({
+    super.key,
+    required this.options,
+    required this.initialValue,
+  });
 
   @override
   _MinimalDropdownState createState() => _MinimalDropdownState();
@@ -214,15 +220,21 @@ class _MinimalDropdownState extends State<MinimalDropdown> {
             selectedValue = value;
           });
         },
-        itemBuilder: (context) => widget.options
-            .map((item) => PopupMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    item,
-                    style: AspirantsAITextStyles.bodySmall.copyWith(fontSize: 12),
-                  ),
-                ))
-            .toList(),
+        itemBuilder:
+            (context) =>
+                widget.options
+                    .map(
+                      (item) => PopupMenuItem<String>(
+                        value: item,
+                        child: Text(
+                          item,
+                          style: AspirantsAITextStyles.bodySmall.copyWith(
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

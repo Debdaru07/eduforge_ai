@@ -16,12 +16,8 @@ class _UploadState extends State<Upload> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          PDFUploader(),
-          UploadedDocuments()
-        ],
+        children: [PDFUploader(), UploadedDocuments()],
       ),
     );
   }
 }
-

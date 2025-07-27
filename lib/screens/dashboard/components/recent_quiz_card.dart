@@ -31,7 +31,7 @@ class RecentQuizCard extends StatelessWidget {
                     fontFamily: 'Satoshi',
                     fontWeight: FontWeight.w500,
                     fontSize: 16,
-                    letterSpacing: 0.1
+                    letterSpacing: 0.1,
                   ),
                 ),
                 Text(

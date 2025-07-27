@@ -65,7 +65,9 @@ class FeedbackHelpers {
           const SizedBox(height: 4), // mb-1
           Text(
             subtitle,
-            style: AspirantsAITextStyles.bodySmall.copyWith(color: subtitleColor),
+            style: AspirantsAITextStyles.bodySmall.copyWith(
+              color: subtitleColor,
+            ),
           ),
         ],
       ),
@@ -117,7 +119,9 @@ class FeedbackHelpers {
           const SizedBox(height: 8), // mb-2
           Text(
             description,
-            style: AspirantsAITextStyles.bodySmall.copyWith(color: AspirantsAIPalette.grey600),
+            style: AspirantsAITextStyles.bodySmall.copyWith(
+              color: AspirantsAIPalette.grey600,
+            ),
           ),
           const SizedBox(height: 8), // mb-2
           TextButton(
@@ -180,7 +184,9 @@ class FeedbackHelpers {
                 const SizedBox(height: 4), // mb-1
                 Text(
                   description,
-                  style: AspirantsAITextStyles.bodySmall.copyWith(color: AspirantsAIPalette.grey600),
+                  style: AspirantsAITextStyles.bodySmall.copyWith(
+                    color: AspirantsAIPalette.grey600,
+                  ),
                 ),
               ],
             ),

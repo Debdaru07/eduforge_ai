@@ -22,8 +22,8 @@ class StudyRecommendationCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(Icons.circle, color: AspirantsAIPalette.grey600, size: 13,),
-              const SizedBox(width: 8,),
+              Icon(Icons.circle, color: AspirantsAIPalette.grey600, size: 13),
+              const SizedBox(width: 8),
               Text(
                 title,
                 style: const TextStyle(

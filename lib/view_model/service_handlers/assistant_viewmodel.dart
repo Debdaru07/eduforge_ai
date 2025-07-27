@@ -16,7 +16,10 @@ class AssistantViewModel with ChangeNotifier {
     notifyListeners();
 
     final snapshot = await firebaseService.db.collection('assistants').get();
-    assistants = snapshot.docs.map((doc) => AssistantModel.fromMap(doc.data(), doc.id)).toList();
+    assistants =
+        snapshot.docs
+            .map((doc) => AssistantModel.fromMap(doc.data(), doc.id))
+            .toList();
 
     isLoading = false;
     notifyListeners();

@@ -26,7 +26,9 @@ class _QuizState extends State<QuizScreen> {
         padding: const EdgeInsets.all(32.0), // p-8 (8 * 4px = 32px)
         child: Center(
           child: Container(
-            constraints: const BoxConstraints(maxWidth: 896), // max-w-4xl (4xl = 56rem = 896px)
+            constraints: const BoxConstraints(
+              maxWidth: 896,
+            ), // max-w-4xl (4xl = 56rem = 896px)
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,12 +125,18 @@ class _QuizState extends State<QuizScreen> {
                         const SizedBox(height: 24), // mt-6
                         Center(
                           child: ElevatedButton(
-                            onPressed: () => setState(() => _isQuizStarted = true),
+                            onPressed:
+                                () => setState(() => _isQuizStarted = true),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AspirantsAIPalette.purple,
                               foregroundColor: AspirantsAIPalette.white,
-                              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12), // px-8 py-3
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 32,
+                                vertical: 12,
+                              ), // px-8 py-3
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                             ),
                             child: Text(
                               'Start Quiz',
@@ -163,50 +171,75 @@ class _QuizState extends State<QuizScreen> {
                           Container(
                             padding: const EdgeInsets.all(24), // p-6
                             decoration: const BoxDecoration(
-                              border: Border(bottom: BorderSide(color: AspirantsAIPalette.grey300)),
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: AspirantsAIPalette.grey300,
+                                ),
+                              ),
                             ),
                             child: Column(
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
                                       children: [
                                         Text(
                                           'Question $_currentQuestion of $_totalQuestions',
-                                          style: AspirantsAITextStyles.bodySmall.copyWith(
-                                            color: AspirantsAIPalette.grey600,
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                                          style: AspirantsAITextStyles.bodySmall
+                                              .copyWith(
+                                                color:
+                                                    AspirantsAIPalette.grey600,
+                                                fontWeight: FontWeight.w500,
+                                              ),
                                         ),
                                         const SizedBox(width: 16), // space-x-4
                                         Container(
-                                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4), // px-3 py-1
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 12,
+                                            vertical: 4,
+                                          ), // px-3 py-1
                                           decoration: BoxDecoration(
-                                            color: AspirantsAIPalette.purple.withOpacity(0.1),
-                                            borderRadius: BorderRadius.circular(16), // rounded-full
+                                            color: AspirantsAIPalette.purple
+                                                .withOpacity(0.1),
+                                            borderRadius: BorderRadius.circular(
+                                              16,
+                                            ), // rounded-full
                                           ),
                                           child: Text(
                                             'Indian Polity',
-                                            style: AspirantsAITextStyles.bodySmall.copyWith(
-                                              color: AspirantsAIPalette.purple,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                            style: AspirantsAITextStyles
+                                                .bodySmall
+                                                .copyWith(
+                                                  color:
+                                                      AspirantsAIPalette.purple,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                           ),
                                         ),
                                         const SizedBox(width: 16),
                                         Container(
-                                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 12,
+                                            vertical: 4,
+                                          ),
                                           decoration: BoxDecoration(
-                                            color: AspirantsAIPalette.green.withOpacity(0.1),
-                                            borderRadius: BorderRadius.circular(16),
+                                            color: AspirantsAIPalette.green
+                                                .withOpacity(0.1),
+                                            borderRadius: BorderRadius.circular(
+                                              16,
+                                            ),
                                           ),
                                           child: Text(
                                             'Medium',
-                                            style: AspirantsAITextStyles.bodySmall.copyWith(
-                                              color: AspirantsAIPalette.green,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                            style: AspirantsAITextStyles
+                                                .bodySmall
+                                                .copyWith(
+                                                  color:
+                                                      AspirantsAIPalette.green,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                           ),
                                         ),
                                       ],
@@ -234,7 +267,9 @@ class _QuizState extends State<QuizScreen> {
                                     ),
                                     Container(
                                       height: 8,
-                                      width: MediaQuery.of(context).size.width * 0.1, // 10% progress
+                                      width:
+                                          MediaQuery.of(context).size.width *
+                                          0.1, // 10% progress
                                       decoration: BoxDecoration(
                                         color: AspirantsAIPalette.purple,
                                         borderRadius: BorderRadius.circular(16),
@@ -266,28 +301,40 @@ class _QuizState extends State<QuizScreen> {
                                     QuizComponents.buildQuizOption(
                                       optionLabel: 'A.',
                                       optionText: 'Right to Equality',
-                                      onTap: () => setState(() => _selectedOption = 'A'),
+                                      onTap:
+                                          () => setState(
+                                            () => _selectedOption = 'A',
+                                          ),
                                       isSelected: _selectedOption == 'A',
                                     ),
                                     const SizedBox(height: 12), // space-y-3
                                     QuizComponents.buildQuizOption(
                                       optionLabel: 'B.',
                                       optionText: 'Right to Freedom',
-                                      onTap: () => setState(() => _selectedOption = 'B'),
+                                      onTap:
+                                          () => setState(
+                                            () => _selectedOption = 'B',
+                                          ),
                                       isSelected: _selectedOption == 'B',
                                     ),
                                     const SizedBox(height: 12),
                                     QuizComponents.buildQuizOption(
                                       optionLabel: 'C.',
                                       optionText: 'Right to Work',
-                                      onTap: () => setState(() => _selectedOption = 'C'),
+                                      onTap:
+                                          () => setState(
+                                            () => _selectedOption = 'C',
+                                          ),
                                       isSelected: _selectedOption == 'C',
                                     ),
                                     const SizedBox(height: 12),
                                     QuizComponents.buildQuizOption(
                                       optionLabel: 'D.',
                                       optionText: 'Right against Exploitation',
-                                      onTap: () => setState(() => _selectedOption = 'D'),
+                                      onTap:
+                                          () => setState(
+                                            () => _selectedOption = 'D',
+                                          ),
                                       isSelected: _selectedOption == 'D',
                                     ),
                                   ],
@@ -299,7 +346,11 @@ class _QuizState extends State<QuizScreen> {
                           Container(
                             padding: const EdgeInsets.all(24), // p-6
                             decoration: const BoxDecoration(
-                              border: Border(top: BorderSide(color: AspirantsAIPalette.grey300)),
+                              border: Border(
+                                top: BorderSide(
+                                  color: AspirantsAIPalette.grey300,
+                                ),
+                              ),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -316,43 +367,59 @@ class _QuizState extends State<QuizScreen> {
                                     });
                                   },
                                   style: TextButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8), // px-6 py-2
-                                    side: const BorderSide(color: AspirantsAIPalette.grey300),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 24,
+                                      vertical: 8,
+                                    ), // px-6 py-2
+                                    side: const BorderSide(
+                                      color: AspirantsAIPalette.grey300,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                   ),
                                   child: Text(
                                     'Skip Question',
-                                    style: AspirantsAITextStyles.bodyMedium.copyWith(
-                                      color: AspirantsAIPalette.grey600,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                    style: AspirantsAITextStyles.bodyMedium
+                                        .copyWith(
+                                          color: AspirantsAIPalette.grey600,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                   ),
                                 ),
                                 ElevatedButton(
-                                  onPressed: _selectedOption.isNotEmpty
-                                      ? () {
-                                          setState(() {
-                                            if (_currentQuestion < _totalQuestions) {
-                                              _currentQuestion++;
-                                              _selectedOption = '';
-                                            } else {
-                                              _isQuizCompleted = true;
-                                            }
-                                          });
-                                        }
-                                      : null,
+                                  onPressed:
+                                      _selectedOption.isNotEmpty
+                                          ? () {
+                                            setState(() {
+                                              if (_currentQuestion <
+                                                  _totalQuestions) {
+                                                _currentQuestion++;
+                                                _selectedOption = '';
+                                              } else {
+                                                _isQuizCompleted = true;
+                                              }
+                                            });
+                                          }
+                                          : null,
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AspirantsAIPalette.purple,
                                     foregroundColor: AspirantsAIPalette.white,
-                                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 24,
+                                      vertical: 8,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                   ),
                                   child: Text(
                                     'Submit Answer',
-                                    style: AspirantsAITextStyles.bodyMedium.copyWith(
-                                      color: AspirantsAIPalette.white,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                    style: AspirantsAITextStyles.bodyMedium
+                                        .copyWith(
+                                          color: AspirantsAIPalette.white,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                   ),
                                 ),
                               ],
@@ -385,7 +452,9 @@ class _QuizState extends State<QuizScreen> {
                                 width: 80,
                                 height: 80, // w-20 h-20
                                 decoration: BoxDecoration(
-                                  color: AspirantsAIPalette.green.withOpacity(0.1),
+                                  color: AspirantsAIPalette.green.withOpacity(
+                                    0.1,
+                                  ),
                                   shape: BoxShape.circle,
                                 ),
                                 child: const Icon(
@@ -407,9 +476,10 @@ class _QuizState extends State<QuizScreen> {
                               const SizedBox(height: 8), // mb-2
                               Text(
                                 'Great job on completing the quiz. Here are your results:',
-                                style: AspirantsAITextStyles.bodyMedium.copyWith(
-                                  color: AspirantsAIPalette.grey600,
-                                ),
+                                style: AspirantsAITextStyles.bodyMedium
+                                    .copyWith(
+                                      color: AspirantsAIPalette.grey600,
+                                    ),
                               ),
                             ],
                           ),
@@ -425,19 +495,25 @@ class _QuizState extends State<QuizScreen> {
                               QuizComponents.buildQuizResultCard(
                                 value: '8/10',
                                 label: 'Correct Answers',
-                                bgColor: AspirantsAIPalette.green.withOpacity(0.1),
+                                bgColor: AspirantsAIPalette.green.withOpacity(
+                                  0.1,
+                                ),
                                 textColor: AspirantsAIPalette.green,
                               ),
                               QuizComponents.buildQuizResultCard(
                                 value: '80%',
                                 label: 'Accuracy',
-                                bgColor: AspirantsAIPalette.purple.withOpacity(0.1),
+                                bgColor: AspirantsAIPalette.purple.withOpacity(
+                                  0.1,
+                                ),
                                 textColor: AspirantsAIPalette.purple,
                               ),
                               QuizComponents.buildQuizResultCard(
                                 value: '12:45',
                                 label: 'Time Taken',
-                                bgColor: AspirantsAIPalette.purple.withOpacity(0.1),
+                                bgColor: AspirantsAIPalette.purple.withOpacity(
+                                  0.1,
+                                ),
                                 textColor: AspirantsAIPalette.purple,
                               ),
                             ],
@@ -460,9 +536,12 @@ class _QuizState extends State<QuizScreen> {
                               QuizComponents.buildWeakTopicCard(
                                 title: 'Question 1: Fundamental Rights',
                                 accuracy: 'Correct',
-                                description: 'Your answer: C. Right to Work\nExplanation: Right to Work is a Directive Principle, not a Fundamental Right.',
+                                description:
+                                    'Your answer: C. Right to Work\nExplanation: Right to Work is a Directive Principle, not a Fundamental Right.',
                                 buttonText: '',
-                                bgColor: AspirantsAIPalette.green.withOpacity(0.1),
+                                bgColor: AspirantsAIPalette.green.withOpacity(
+                                  0.1,
+                                ),
                                 borderColor: AspirantsAIPalette.green,
                                 accuracyColor: AspirantsAIPalette.green,
                               ),
@@ -470,9 +549,12 @@ class _QuizState extends State<QuizScreen> {
                               QuizComponents.buildWeakTopicCard(
                                 title: 'Question 3: Constitutional Amendments',
                                 accuracy: 'Incorrect',
-                                description: 'Your answer: B. Article 368 | Correct answer: A. Article 356\nExplanation: Article 356 deals with President\'s Rule in states.',
+                                description:
+                                    'Your answer: B. Article 368 | Correct answer: A. Article 356\nExplanation: Article 356 deals with President\'s Rule in states.',
                                 buttonText: '',
-                                bgColor: AspirantsAIPalette.orange.withOpacity(0.1),
+                                bgColor: AspirantsAIPalette.orange.withOpacity(
+                                  0.1,
+                                ),
                                 borderColor: AspirantsAIPalette.orange,
                                 accuracyColor: AspirantsAIPalette.orange,
                               ),
@@ -486,38 +568,53 @@ class _QuizState extends State<QuizScreen> {
                               TextButton(
                                 onPressed: () {},
                                 style: TextButton.styleFrom(
-                                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8), // px-6 py-2
-                                  side: const BorderSide(color: AspirantsAIPalette.grey300),
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 24,
+                                    vertical: 8,
+                                  ), // px-6 py-2
+                                  side: const BorderSide(
+                                    color: AspirantsAIPalette.grey300,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
                                 ),
                                 child: Text(
                                   'Review Answers',
-                                  style: AspirantsAITextStyles.bodyMedium.copyWith(
-                                    color: AspirantsAIPalette.grey600,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                                  style: AspirantsAITextStyles.bodyMedium
+                                      .copyWith(
+                                        color: AspirantsAIPalette.grey600,
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                 ),
                               ),
                               const SizedBox(width: 16), // space-x-4
                               ElevatedButton(
-                                onPressed: () => setState(() {
-                                  _isQuizStarted = false;
-                                  _isQuizCompleted = false;
-                                  _currentQuestion = 1;
-                                  _selectedOption = '';
-                                }),
+                                onPressed:
+                                    () => setState(() {
+                                      _isQuizStarted = false;
+                                      _isQuizCompleted = false;
+                                      _currentQuestion = 1;
+                                      _selectedOption = '';
+                                    }),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AspirantsAIPalette.purple,
                                   foregroundColor: AspirantsAIPalette.white,
-                                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 24,
+                                    vertical: 8,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
                                 ),
                                 child: Text(
                                   'Take Another Quiz',
-                                  style: AspirantsAITextStyles.bodyMedium.copyWith(
-                                    color: AspirantsAIPalette.white,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                                  style: AspirantsAITextStyles.bodyMedium
+                                      .copyWith(
+                                        color: AspirantsAIPalette.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                 ),
                               ),
                             ],
